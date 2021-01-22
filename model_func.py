@@ -40,6 +40,7 @@ def model(param_g, param_A, param_H, theta, a, b, y0):
     
     
     """#### CÁLCULO DE VALORES ### """
+    #Los cálculos de valores se hace según modelado del paper
     
     hr_factor = np.sqrt(hrmean/60)            #Factor que permite la adaptabilidad de las posiciones al ritmo cardíaco 
     fresp = Resp_by_min/60      
@@ -53,7 +54,7 @@ def model(param_g, param_A, param_H, theta, a, b, y0):
     theta_Tu = theta_Tu * np.sqrt(hr_factor)
     
     #Determina el alto de cada peak
-    a_P = a_P
+    a_P = a_P #Estos son redundantes, pero como no generan coste en procesamiento, están sólo para mantener uniformidad en la codificación 
     a_Q = a_Q
     a_R = a_R
     a_S = a_S
@@ -71,8 +72,10 @@ def model(param_g, param_A, param_H, theta, a, b, y0):
     
     """#### Creación Tacograma ### """
     
+    #Generación de intervalos rr. rr_times guarda la duración de cada pulsación
     rr_times = RR_gen(f1, f2, c1, c2, hrmean, hrstd, n)
 
+    #De duraciones se transforma a unicaciones temporales en una linea de tiempo completa
     rr_axis = []
     cumulative_time = 0
 
