@@ -2,4 +2,4 @@
 
 Main file: Interfaz.py
 
-![Dependencias Programa](graph/out.png)
+![Dependencias Programa](out.png)
