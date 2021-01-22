@@ -135,6 +135,7 @@ def model(param_g, param_A, param_H, theta, a, b, y0):
     
 if __name__ == "__main__":
       
+    #Esto está sólo para probar el modelo o  probarlo de manera independiente
     param_gener = variables_func.param_gener
     param_Artf = variables_func.param_Artf
     param_HVR = variables_func.param_HVR

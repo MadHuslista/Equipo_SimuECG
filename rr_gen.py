@@ -85,7 +85,8 @@ def RR_gen(f1, f2, c1, c2, hrmean, hrstd, n):
     return rr_times
 
 def main():
-    
+
+    #Esto está sólo para probar el modelo o  probarlo de manera independiente
     hrmean = 60
     hrstd = 1
     sfrr = 1
