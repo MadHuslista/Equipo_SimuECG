@@ -25,17 +25,19 @@ slid.plt.close("all")
 #######################       (Variables Globales)       ####################################
 """
 
-#Se va al variables_func.py y se recuperan las listas en las que están las variables con sus valores 
-#de inicialización en la práctica aquí sólo se renombran para facilitar manipulación para su actualización; 
-#en todo momento están haciendo referencia a las variables creadas en variables_func
+#Se va al variables_func.py y se recuperan las listas en las que están las variables con sus valores default
+#De allí se traspasan sus valores a nuevas listas y se independiza su referencia 
+#de las listas de 'variables_func.py' a través del método .copy(); 
+#De esta manera se puede trabajar libremente en la modificación de estos valores, sin generar alteraciones inesperadas.
+ 
+param_gener = varfun.param_gener.copy()
+param_Artf = varfun.param_Artf.copy()
+param_HVR = varfun.param_HVR.copy()
+theta_vals = varfun.theta_vals.copy()
+a_vals = varfun.a_vals.copy()
+b_vals = varfun.b_vals.copy()
+y0 = varfun.y0.copy()
 
-param_gener = varfun.param_gener
-param_Artf = varfun.param_Artf
-param_HVR = varfun.param_HVR
-theta_vals = varfun.theta_vals
-a_vals = varfun.a_vals
-b_vals = varfun.b_vals
-y0 = varfun.y0
 
 
 """
