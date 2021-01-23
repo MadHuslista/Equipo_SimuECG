@@ -30,7 +30,7 @@ slid.plt.close("all")
 #de las listas de 'variables_func.py' a través del método .copy(); 
 #De esta manera se puede trabajar libremente en la modificación de estos valores, sin generar alteraciones inesperadas.
  
-param_gener = varfun.param_gener
+param_gener = varfun.param_gener.copy()
 param_Artf = varfun.param_Artf.copy()
 param_HVR = varfun.param_HVR.copy()
 theta_vals = varfun.theta_vals.copy()
