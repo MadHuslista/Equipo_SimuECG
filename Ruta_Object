@@ -1,0 +1,6 @@
+
+- convertir el modelo y en objetos. 
+    - ojo porque creo que el ODE sólo puede funcionar con una instancia! 
+    
+    - La idea es convertir el dinamic function en una clase. Este se encarga de crear calcular las derivadas. 
+    - 
