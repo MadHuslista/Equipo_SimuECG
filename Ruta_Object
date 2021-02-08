@@ -1,6 +1,11 @@
 
-- convertir el modelo y en objetos. 
-    - ojo porque creo que el ODE sólo puede funcionar con una instancia! 
-    
-    - La idea es convertir el dinamic function en una clase. Este se encarga de crear calcular las derivadas. 
-    - 
+Primer Objetivo: 
+    - Conseguir el set de datos de las 12 
+        - Para ello, primero re-aislar de todo la majamama para la animación. 
+        - Una vez aislado pasarlos a objetos
+        - Plotearlo de manera simple para ver que funciona. 
+        - Revisar qué bases de datos utilizar -> Papers
+        - Ajustar la amplitud a los datos de la BD utilizada. 
+
+        - Ajustar los valores de las 12. 
+    (continuar construyendo esto. Considerar el paso de la IA para la obtención de los parámetros) 
