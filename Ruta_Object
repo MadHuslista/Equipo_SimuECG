@@ -1,7 +1,9 @@
 
 Primer Objetivo: 
     - Preparar los integradores para las 12 deriv 
-        - Para ello, primero re-aislar de todo la majamama para la animación. 
+        + Para ello, primero re-aislar de todo la majamama para la animación. 
+            + Es simplemente model_func.py <= {din_fun.py, rr_gen.py y variables_func.py}
+        - Revisar requisitos para utilizar la AI
         - Una vez aislado pasarlos a objetos
         - Plotearlo de manera simple para ver que funciona. 
         - Revisar qué bases de datos utilizar -> Papers

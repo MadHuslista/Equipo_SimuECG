@@ -1,0 +1,40 @@
+El problema: 
+    - Tengo un grupo de parámetros a optimizar tal que logren generar un cierto set de datos. 
+
+Caracterízación del Problema: 
+
+I : reinforcement learning problem.
+O : regression problem
+
+continuous function optimization, 
+    - where the input arguments to the function are real-valued numeric values, e.g. floating point values. 
+    - The output from the function is also a real-valued evaluation of the input values
+
+
+
+Posibles estrategias de preprocesado: 
+    - Normalizar los RR y dividir toda la secuencia de ECG por onda RR
+
+Posibles Alternativas: 
+    + Pages: 
+        + http://lipiji.com/docs/li2017optdl.pdf -> Adadelta
+        + https://medium.com/better-programming/machine-learning-optimization-methods-and-techniques-56f5a6fc5d0e
+        + https://machinelearningmastery.com/tour-of-optimization-algorithms/
+        => usará genetic + adadelta
+    + La weá de deepmind para las proteinas (dotcsv video) 
+        => noup, porque lo que hace es diseñar un modelo. Posterior a la predicción al modelo, entra un algoritmo de optimización. 
+    + La weá de las time series del profe. 
+        => ninguna. son dos: la 1) discretiza en una string una serie de tiempo de valores reales; la 2) efectúa una evaluación masiva de 7700 comparadores y encuentra los más objetivos para la clasificación. 
+    + Algoritmo Genético (quiero cachar si hay algo mejor)
+        => Lo hay, los optimizadores Adadelta. Revisar como implementarlos con TF.  
+
+Estrategias a utilizar: 
+    - Probar con el Adadelta Optimizer del Keras
+        - Seguir este tuto: https://www.tensorflow.org/guide/keras/customizing_what_happens_in_fit
+          En la práctica hay que sobrescribir la clase del modelo de keras, en particular en donde se calcula el loss value. (el cálculo del error) 
+
+        - Creo que en verdad la cosa es aquí: https://www.tensorflow.org/guide/keras/custom_layers_and_models#setup
+            En teoría debería crear una 'custom layer' que haga el cómputo del ode y toah la weá. 
+            Y luego esa layer, la meto en un modelo y termino de usar el keras de manera normal 
+    - Crear algoritmo genético y probar 
+    - 
