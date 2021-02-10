@@ -39,18 +39,31 @@ Estrategias a utilizar:
     - Crear algoritmo genético y probar 
 
 
-Para cualquiera de los dos métodos necesito tener una señal de referencia. 
-Para ello la apuesta es la siguiente: 
-    - Tengo una base de datos de mediciones de 10 segundos. (Lobachevsky y PTB-XL)
-    - Crear un capturador simple de intervalo RR, para luego pasarle ESE tacograma al modelo 
-    - Para que así la señal creada con el modelo CALCE con la señal de referencia. 
+    Para cualquiera de los dos métodos necesito tener una señal de referencia. 
+    Para ello la apuesta es la siguiente: 
+        + Tengo una base de datos de mediciones de 10 segundos. (Lobachevsky y PTB-XL)
+        + Crear un capturador simple de intervalo RR, para luego pasarle ESE tacograma al modelo 
+        + Para que así la señal creada con el modelo CALCE con la señal de referencia. 
 
-Luego, con esta referencia, crear el aprendizaje. 
+    Luego, con esta referencia, crear el aprendizaje. 
 
+    Para ello: 
+        + Montar señal y plotearla. 
+        + Armar el detector de RR
+            + Primer intento: https://blog.orikami.nl/exploring-heart-rate-variability-using-python-483a7037c64d => No funciona correctamente. 
+            + Segundo intento exitoso: Se usa Biosppy => EXITO ROTUNDO! 
 
-Para ello: 
-    + Montar señal y plotearla. 
-    - Armar el detector de RR
-        - Primer intento: https://blog.orikami.nl/exploring-heart-rate-variability-using-python-483a7037c64d => No funciona correctamente. 
-        - Segundo intento exitoso: Se usa Biosppy 
+        + BioSppy es capaz de obtener latido a latido! 
+        + Por tanto se altera la ruta y facilita el camino posterior. 
+    
+    Como puedo obtener latido a latido;
+        - Obtener y poder graficar el latido a latido. 
+        - Comparar el segmentador de hamilton vs el de engzee. BioSppy usa como default el de Hamilton. Por qué será?   
+            RESP: Engzee es como del 1979 corregido el 2012. 
+                    Hamilton es del 2012, y una empresa opensoource. Es el mejor, esa es la razón. 
+    
+        - Ahora la pregunta es; normalizo el tiempo RR? 
+            - Hasta ahora el segmentador simplemente ubica los momentos del rrpeaks y calcula 0.2 pa atrás y 0.4 pa lante y corta allí y nada más. 
+            - Habrá que normalizar? Pareciera que no. 
+
             
