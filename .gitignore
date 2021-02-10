@@ -7,3 +7,7 @@ EArte/
 12_Deriv/.vscode/
 12_Deriv/.~*
 12_Deriv/.vscode/*
+*.hea
+*.dat
+*biosppy
+*json
