@@ -46,3 +46,11 @@ Para ello la apuesta es la siguiente:
     - Para que así la señal creada con el modelo CALCE con la señal de referencia. 
 
 Luego, con esta referencia, crear el aprendizaje. 
+
+
+Para ello: 
+    + Montar señal y plotearla. 
+    - Armar el detector de RR
+        - Primer intento: https://blog.orikami.nl/exploring-heart-rate-variability-using-python-483a7037c64d => No funciona correctamente. 
+        - Segundo intento exitoso: Se usa Biosppy 
+            
