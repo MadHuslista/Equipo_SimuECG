@@ -37,4 +37,12 @@ Estrategias a utilizar:
             En teoría debería crear una 'custom layer' que haga el cómputo del ode y toah la weá. 
             Y luego esa layer, la meto en un modelo y termino de usar el keras de manera normal 
     - Crear algoritmo genético y probar 
-    - 
+
+
+Para cualquiera de los dos métodos necesito tener una señal de referencia. 
+Para ello la apuesta es la siguiente: 
+    - Tengo una base de datos de mediciones de 10 segundos. (Lobachevsky y PTB-XL)
+    - Crear un capturador simple de intervalo RR, para luego pasarle ESE tacograma al modelo 
+    - Para que así la señal creada con el modelo CALCE con la señal de referencia. 
+
+Luego, con esta referencia, crear el aprendizaje. 
