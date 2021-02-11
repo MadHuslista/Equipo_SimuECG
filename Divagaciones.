@@ -57,13 +57,30 @@ Estrategias a utilizar:
         + Por tanto se altera la ruta y facilita el camino posterior. 
     
     Como puedo obtener latido a latido;
-        - Obtener y poder graficar el latido a latido. 
-        - Comparar el segmentador de hamilton vs el de engzee. BioSppy usa como default el de Hamilton. Por qué será?   
+        + Obtener y poder graficar el latido a latido. 
+        + Comparar el segmentador de hamilton vs el de engzee. BioSppy usa como default el de Hamilton. Por qué será?   
             RESP: Engzee es como del 1979 corregido el 2012. 
                     Hamilton es del 2012, y una empresa opensoource. Es el mejor, esa es la razón. 
     
-        - Ahora la pregunta es; normalizo el tiempo RR? 
-            - Hasta ahora el segmentador simplemente ubica los momentos del rrpeaks y calcula 0.2 pa atrás y 0.4 pa lante y corta allí y nada más. 
-            - Habrá que normalizar? Pareciera que no. 
+        + Ahora la pregunta es; normalizo el tiempo RR? 
+            + Hasta ahora el segmentador simplemente ubica los momentos del rrpeaks y calcula 0.2 pa atrás y 0.4 pa lante y corta allí y nada más. 
+            + Habrá que normalizar? Pareciera que no. [EDIT] Si hay que hacerlo, por lo que indica [5] en 'Otros Importantes'.
+
+    Como ejecutar la normalización: 
+
+        - Ya tengo los rpeaks. 
+        - La normalización de los intervalos será a 900ms y por método de interpolación/decimation or oversamplig según ORIFANDIS!
+        - Luego; los intervalos serán calculados según el RR-interval correspondiente y luego ese RR-interval será asociado al 0.2 y 0.4 
+        - Ahora, Cómo lo asocio? 
+
+        - Intento de normalización: 
+            + 1.- obtener los template y graficarlos de manera independiente. => Basta con tomar los templates y graficarlos todos -uno a uno con plt.plot- versus el eje temporal retornado
+            + 2.- extraer de manera independiente los heartbeats.             => Done; se consigue copiando la función original, pero agregando la adaptación del intervalo RR. 
+            - 3.- Concretar la interpolación.       
+                    + Si la derivación es la AVR (index[3]) debe multiplicarse por -1 y todo funciona de maravillas. Por definición las derivaciones deben ser: AVR, AVL, V1 y V2 (enfrentan al revés el vector de despo)
+                    + Además para centrar correctamente, debe ser el sampleo high resolution. 
+                    + Para mantener centrado el RR-peak, la interpolación se hará en mitades, tal que el RR siga centrado. 
+                        - Probé 'scipy.resample'. Funciona pero aparece un rizado bastante desagradable. 
+                        - Probar otros métodos de resampleo
 
             
