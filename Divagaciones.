@@ -81,6 +81,6 @@ Estrategias a utilizar:
                     + Además para centrar correctamente, debe ser el sampleo high resolution. 
                     + Para mantener centrado el RR-peak, la interpolación se hará en mitades, tal que el RR siga centrado. 
                         - Probé 'scipy.resample'. Funciona pero aparece un rizado bastante desagradable. 
-                        - Probar otros métodos de resampleo
+                        - Probar otros métodos de resampleo (quizás agregar un filtro de alta frecuencia? Un pasa bajo? ) 
 
             

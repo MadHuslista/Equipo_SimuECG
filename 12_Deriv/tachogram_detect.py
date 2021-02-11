@@ -58,7 +58,7 @@ def extract_heartbeats_RRadapted(signal=None, rpeaks=None, sampling_rate=0, befo
         a_sig = scp_sig.resample(a_sig, norm_bef)
         b_sig = scp_sig.resample(b_sig, norm_aft)
 
-        print(len(a_sig), len(b_sig))
+        #print(len(a_sig), len(b_sig))
 
         sig = np.concatenate((a_sig, b_sig))
 
@@ -87,7 +87,7 @@ for f in l:
             #Doy vuelta la señal, así efectivamente toma el R, que en estas derivaciones es negativo
             signal_l *= -1
 
-        out = ecg.ecg(signal= signal_l, sampling_rate=500., show=False)
+        out = ecg.ecg(signal= signal_l, sampling_rate=500., show=True)
 
         filtered = out['filtered']
         rpeaks = out['rpeaks']
