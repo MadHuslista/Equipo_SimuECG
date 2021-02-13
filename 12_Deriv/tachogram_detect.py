@@ -1,5 +1,6 @@
  
 import pandas as pd
+from numpy.fft import fft
 import numpy as np
 import wfdb
 import matplotlib.pyplot as plt 
@@ -24,8 +25,9 @@ def extract_heartbeats_RRadapted(signal=None, rpeaks=None, sampling_rate=0, befo
     #Get RR intervals. 
     RR_int_sig = rpeaks[1:] - rpeaks[:-1]
     length = len(signal)
+    
     templates = []
-
+    o_temp = []
 
     max_bef = int(before * (float(max(RR_int_sig))/float(ref_rr)))
     #print(max_bef)
@@ -46,7 +48,8 @@ def extract_heartbeats_RRadapted(signal=None, rpeaks=None, sampling_rate=0, befo
         if b > length: 
             break
         
-        #sig = signal[a:b]
+    
+        o_sig = signal[a:b]
         a_sig = signal[a:rpeaks[i]]
         b_sig = signal[rpeaks[i]:b]
 
@@ -60,17 +63,24 @@ def extract_heartbeats_RRadapted(signal=None, rpeaks=None, sampling_rate=0, befo
         a_sig = scp_sig.resample(a_sig, norm_bef)
         b_sig = scp_sig.resample(b_sig, norm_aft)
 
-
         #Se termina de construir la señal completa ya resampleada. 
         sig = np.concatenate((a_sig, b_sig))
 
-        #if bef_adapt < max_bef:                    #Calce a mano por técnica de 'zero padding' 
-        #    padd = np.zeros((max_bef - bef_adapt))
-        #    sig = np.insert(sig, 0,padd)
+        #Filtrado de frecuencias espúreas por fuera de [-90°, 90°] => [112:338]
+        fft_sig = fft(sig)
+        fft_sig = np.fft.fftshift(fft_sig)
+
+        fft_sig.real[0:112] = 0
+        fft_sig.real[338:] = 0
+        fft_sig.imag[0:112] = 0
+        fft_sig.imag[338:] = 0
+        
+        fft_sig = np.fft.ifftshift(fft_sig)
+        filt_sig = np.fft.ifft(fft_sig)
 
         #Se reunen y devuelven todos los heartbeats independizados de la señal recibida. 
-        templates.append(sig)
-        
+        templates.append(filt_sig)
+
     return templates
 
 
@@ -91,10 +101,11 @@ for f in l:
             #Doy vuelta la señal, así efectivamente toma el R, que en estas derivaciones es negativo
             signal_l *= -1
 
-        out = ecg.ecg(signal= signal_l, sampling_rate=500., show=True)
+        out = ecg.ecg(signal= signal_l, sampling_rate=500., show=False)
 
         filtered = out['filtered']
         rpeaks = out['rpeaks']
+        templates = out['templates']
 
         if ecg_l[1]['sig_name'][i] in ['AVR', 'AVL','V1', 'V2']:
             #Una vez efectuado el rpocesamiento la desdoy vuelta, para devolverla a su estado original. 
@@ -102,10 +113,59 @@ for f in l:
 
         t = extract_heartbeats_RRadapted(filtered, rpeaks, 500)
 
-        for j in t: 
-            plt.plot(j)
+        
+
+        fig, ax = plt.subplots()
+
+        #Resampled
+        for j in t[0][0:1]: 
+            fft_j = fft(j)
+            fft_j = np.fft.fftshift(fft_j)
+            f_ax = np.linspace(-np.pi, np.pi, len(fft_j))
+
+            #Limpieza fuera del rango [-90°, 90°] => [112:338]
+            print(len(fft_j))
+            fft_j.real[0:112] = 0
+            fft_j.real[338:] = 0
+            fft_j.imag[0:112] = 0
+            fft_j.imag[338:] = 0
+
+            fft_j = np.fft.ifftshift(fft_j)
+            flt_j = np.fft.ifft(fft_j)
+
+            print(len(fft_j),len(flt_j))
+
+            time = np.arange(0,len(j),1)
+            ax.plot(time,j, label='re no flt')
+            ax.plot(time,flt_j, label = 're sí flt')
+
+            #ax[0].plot(fft_j.real)
+            #ax[0].plot(fft_j.imag)
+            #ax[0].plot(fft_j*fft_j.conj())
+
+        #Original
+        for h in t[1][0:1]:
+
+            fft_h = fft(h)
+            fft_h = np.fft.fftshift(fft_h)
+            f_hax = np.linspace(-np.pi, np.pi, len(fft_h))
             
-            #print(len(i))
-        plt.title((ecg_l[1]['sig_name'][i] +' - '+ f))
-        plt.show()
+
+            temp_ts = np.arange(0,450, (450.0/float(len(h))))
+            ax.plot(temp_ts, h, label='orig')
+            
+            #ax[1].plot(f_hax,fft_h.real)
+            #ax[1].plot(f_hax,fft_h.imag)
+            #ax[1].plot(f_hax,fft_h*fft_h.conj())
+
+        ax.legend()
+        fig.show()    
+        fig.suptitle((ecg_l[1]['sig_name'][i] +' - '+ f))
+        input()
+
+    
+    input()
+        
+
+
 
