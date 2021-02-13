@@ -16,12 +16,10 @@ from scipy import signal as scp_sig
 def extract_heartbeats_RRadapted(signal=None, rpeaks=None, sampling_rate=0, before=0.2, after=0.4, rr_norm_interval=0.9):
 
 
-    #Convert delimiters to samples
+    #Convierto los Delimitadores Referenciales de inicio y término a samples. 
     before = before * sampling_rate
     after = after * sampling_rate
     ref_rr = before + after 
-
-    
 
     #Get RR intervals. 
     RR_int_sig = rpeaks[1:] - rpeaks[:-1]
@@ -35,10 +33,12 @@ def extract_heartbeats_RRadapted(signal=None, rpeaks=None, sampling_rate=0, befo
     for i in range(len(RR_int_sig)): 
         #print(rpeaks[i], " ", RR_int_sig[i], end='    ')
 
+        #Obtengo los Delimitadores Proporcionales, en referencia al intervalo propio de la pulsación particular. 
         bef_adapt = int(before * (float(RR_int_sig[i])/float(ref_rr)))
         aft_adapt = int(after * (float(RR_int_sig[i])/float(ref_rr)))
 
-        #print(bef_adapt, aft_adapt)
+        #Extraigo el heartbeat
+        #Se extrae de manera diferenciada en respecto al punto R para mantener su referencia y permitir el calce de todos los R. 
         a = rpeaks[i] - bef_adapt
         if a < 0: 
             continue
@@ -51,22 +51,26 @@ def extract_heartbeats_RRadapted(signal=None, rpeaks=None, sampling_rate=0, befo
         b_sig = signal[rpeaks[i]:b]
 
         #Resampling to 900ms. At 500Hz it would be before:150 + after:300 samples (total:450 samples = 500Hz*0.9s)
+        #Calculo los Delimitadores de Resampleo
         norm_rr = rr_norm_interval * sampling_rate
         norm_bef =  int(before* float(norm_rr)/float(ref_rr))
         norm_aft =  int(after* float(norm_rr)/float(ref_rr))
 
+        #Ejecuto el resampleo. Se efectúa aún por parte para mantener la posición coordinada del R en todos los HR. 
         a_sig = scp_sig.resample(a_sig, norm_bef)
         b_sig = scp_sig.resample(b_sig, norm_aft)
 
-        #print(len(a_sig), len(b_sig))
 
+        #Se termina de construir la señal completa ya resampleada. 
         sig = np.concatenate((a_sig, b_sig))
 
-        #if bef_adapt < max_bef: 
+        #if bef_adapt < max_bef:                    #Calce a mano por técnica de 'zero padding' 
         #    padd = np.zeros((max_bef - bef_adapt))
         #    sig = np.insert(sig, 0,padd)
 
+        #Se reunen y devuelven todos los heartbeats independizados de la señal recibida. 
         templates.append(sig)
+        
     return templates
 
 
