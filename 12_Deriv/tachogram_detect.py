@@ -18,6 +18,7 @@ def extract_heartbeats_RRadapted(signal=None, rpeaks=None, sampling_rate=0, befo
 
 
     #Convierto los Delimitadores Referenciales de inicio y término a samples. 
+    #Al final es 33.3% para el previo R y 66.6% para el post R
     before = before * sampling_rate
     after = after * sampling_rate
     ref_rr = before + after 
@@ -27,13 +28,8 @@ def extract_heartbeats_RRadapted(signal=None, rpeaks=None, sampling_rate=0, befo
     length = len(signal)
     
     templates = []
-    o_temp = []
 
-    max_bef = int(before * (float(max(RR_int_sig))/float(ref_rr)))
-    #print(max_bef)
-
-    for i in range(len(RR_int_sig)): 
-        #print(rpeaks[i], " ", RR_int_sig[i], end='    ')
+    for i in range(len(RR_int_sig)):
 
         #Obtengo los Delimitadores Proporcionales, en referencia al intervalo propio de la pulsación particular. 
         bef_adapt = int(before * (float(RR_int_sig[i])/float(ref_rr)))
@@ -48,8 +44,6 @@ def extract_heartbeats_RRadapted(signal=None, rpeaks=None, sampling_rate=0, befo
         if b > length: 
             break
         
-    
-        o_sig = signal[a:b]
         a_sig = signal[a:rpeaks[i]]
         b_sig = signal[rpeaks[i]:b]
 
@@ -75,6 +69,7 @@ def extract_heartbeats_RRadapted(signal=None, rpeaks=None, sampling_rate=0, befo
         fft_sig.imag[0:112] = 0
         fft_sig.imag[338:] = 0
         
+        #Una vez procesado en frecuencia se recupera la señal temporal
         fft_sig = np.fft.ifftshift(fft_sig)
         filt_sig = np.fft.ifft(fft_sig)
 
@@ -115,56 +110,7 @@ for f in l:
 
         
 
-        fig, ax = plt.subplots()
 
-        #Resampled
-        for j in t[0][0:1]: 
-            fft_j = fft(j)
-            fft_j = np.fft.fftshift(fft_j)
-            f_ax = np.linspace(-np.pi, np.pi, len(fft_j))
-
-            #Limpieza fuera del rango [-90°, 90°] => [112:338]
-            print(len(fft_j))
-            fft_j.real[0:112] = 0
-            fft_j.real[338:] = 0
-            fft_j.imag[0:112] = 0
-            fft_j.imag[338:] = 0
-
-            fft_j = np.fft.ifftshift(fft_j)
-            flt_j = np.fft.ifft(fft_j)
-
-            print(len(fft_j),len(flt_j))
-
-            time = np.arange(0,len(j),1)
-            ax.plot(time,j, label='re no flt')
-            ax.plot(time,flt_j, label = 're sí flt')
-
-            #ax[0].plot(fft_j.real)
-            #ax[0].plot(fft_j.imag)
-            #ax[0].plot(fft_j*fft_j.conj())
-
-        #Original
-        for h in t[1][0:1]:
-
-            fft_h = fft(h)
-            fft_h = np.fft.fftshift(fft_h)
-            f_hax = np.linspace(-np.pi, np.pi, len(fft_h))
-            
-
-            temp_ts = np.arange(0,450, (450.0/float(len(h))))
-            ax.plot(temp_ts, h, label='orig')
-            
-            #ax[1].plot(f_hax,fft_h.real)
-            #ax[1].plot(f_hax,fft_h.imag)
-            #ax[1].plot(f_hax,fft_h*fft_h.conj())
-
-        ax.legend()
-        fig.show()    
-        fig.suptitle((ecg_l[1]['sig_name'][i] +' - '+ f))
-        input()
-
-    
-    input()
         
 
 
