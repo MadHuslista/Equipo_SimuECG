@@ -101,18 +101,17 @@ Ahora necesito construir los algoritmos de aprendizaje:
             - Esta será la ideal . 
             - Para concretarlo podría ser simplemente contrsuir el paso anterior, pero que tenga sólo una capa! Y que los valores de esos nodos -SEAN- los outputs! 
 
-        - Y la otra será el algoritmo genético. 
-            - Se generan subsets -> 10 ondas. 
-            - Efectúo alguna optimización sobre la minimización del error sumado de todo el subset. (onda ERR = SUM[ {i to subset} (subsetsignal_i - sig_construida)] 
-            - Y sobre esto genero una optimización local del subset hasta lo más que se pueda. 
-            - Luego de esa población escojo a los mejores 
-            - Y creo la siguiente generación, que luego se entrena con nuevos subsets (SON RECOMBINADOS) -> con un 60% nuevo (así mantiene un 40% de noción, para que el cambio no sea tan brusco y la mejora gradual) 
+    Y la otra será el algoritmo genético. 
+        - Se generan subsets -> 10 ondas. 
+        - Efectúo alguna optimización sobre la minimización del error sumado de todo el subset. (onda ERR = SUM[ {i to subset} (subsetsignal_i - sig_construida)] 
+        - Y sobre esto genero una optimización local del subset hasta lo más que se pueda. 
+        - Luego de esa población escojo a los mejores 
+        - Y creo la siguiente generación, que luego se entrena con nuevos subsets (SON RECOMBINADOS) -> con un 60% nuevo (así mantiene un 40% de noción, para que el cambio no sea tan brusco y la mejora gradual) 
 
-    Construcción de la BD. 
+    Construcción de la BD de Referencia. 
         - Cómo genero todas las señales de referencia? 
-            - Ya tengo las señales individuales, me falta ver como las guardo en un único archivo. 
+            - Ya tengo la construcción de las señales individuales, me falta ver como las manipulo. 
 
-    Hasta ahora estoy evaluando si utilizo ña custom layer de arriba o aplico algoritmos de reinforcement learning. 
-    En este último caso: "That allows an agent to decide the best next action based on its current state" 
+
       
 
