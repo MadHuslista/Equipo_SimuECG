@@ -13,7 +13,7 @@ continuous function optimization,
 
 
 Posibles estrategias de preprocesado: 
-    - Normalizar los RR y dividir toda la secuencia de ECG por onda RR
+    + Normalizar los RR y dividir toda la secuencia de ECG por onda RR
 
 Posibles Alternativas: 
     + Pages: 
@@ -68,12 +68,12 @@ Estrategias a utilizar:
 
     Como ejecutar la normalización: 
 
-        - Ya tengo los rpeaks. 
-        - La normalización de los intervalos será a 900ms y por método de interpolación/decimation or oversamplig según ORIFANDIS!
-        - Luego; los intervalos serán calculados según el RR-interval correspondiente y luego ese RR-interval será asociado al 0.2 y 0.4 
-        - Ahora, Cómo lo asocio? 
+        + Ya tengo los rpeaks. 
+        + La normalización de los intervalos será a 900ms y por método de interpolación/decimation or oversamplig según ORIFANDIS! => al final se utilizó el scipy.resample() que está basado en fourier
+        + Luego; los intervalos serán calculados según el RR-interval correspondiente y luego ese RR-interval será asociado al 0.2 y 0.4 
+        + Ahora, Cómo lo asocio? 
 
-        - Intento de normalización: 
+        + Intento de normalización: 
             + 1.- obtener los template y graficarlos de manera independiente. => Basta con tomar los templates y graficarlos todos -uno a uno con plt.plot- versus el eje temporal retornado
             + 2.- extraer de manera independiente los heartbeats.             => Done; se consigue copiando la función original, pero agregando la adaptación del intervalo RR. 
             + 3.- Concretar la interpolación.       
@@ -84,6 +84,35 @@ Estrategias a utilizar:
                         + Probar otros métodos de resampleo (quizás agregar un filtro de alta frecuencia? Un pasa bajo? )     
                             + Plotear comparativamente los métodos. -> se ven igual! SON IGUALES.  
                             + Plotear los componentes en frecuencia y ver si aparecen spurios muy desagradables. 
-                                - Sí aparecen, y se elimina todo componente real e impaginario por sobre +- pi/2. 
-                                - Concretado así el filtro, se logra la señal esperada. 
-            
+                                + Sí aparecen, y se elimina todo componente real e impaginario por sobre +- pi/2. 
+                                + Concretado así el filtro, se logra la señal esperada. 
+
+        + Construcción del modelo como objeto y adaptación necesaria para que me genere un único heartbeat de 450 datos. (para que coincida con los heartbeat de la BD) 
+
+Ahora necesito construir los algoritmos de aprendizaje:
+
+    Primero el de Aprendizaje Reforzado. 
+
+    La estrategia será: 
+        x Señal de referencia -> Q LEARNING -> 21 param -> COSTO [ Señal de Ref - Señal Construida. ] => NOP, porque al final voy a tener un set de parámetros por señal. Aunque igual sería interesante ver qué valores me da. 
+            - Su construcción será el paso 1 para entender como usar TF. 
+        
+        - Señal de referencia -> MODELO ADAPTADO CON LOS 21 PARAM CMO WEIGHTS -> COSTO [ Señal de Ref - Señal Construida. ] 
+            - Esta será la ideal . 
+            - Para concretarlo podría ser simplemente contrsuir el paso anterior, pero que tenga sólo una capa! Y que los valores de esos nodos -SEAN- los outputs! 
+
+        - Y la otra será el algoritmo genético. 
+            - Se generan subsets -> 10 ondas. 
+            - Efectúo alguna optimización sobre la minimización del error sumado de todo el subset. (onda ERR = SUM[ {i to subset} (subsetsignal_i - sig_construida)] 
+            - Y sobre esto genero una optimización local del subset hasta lo más que se pueda. 
+            - Luego de esa población escojo a los mejores 
+            - Y creo la siguiente generación, que luego se entrena con nuevos subsets (SON RECOMBINADOS) -> con un 60% nuevo (así mantiene un 40% de noción, para que el cambio no sea tan brusco y la mejora gradual) 
+
+    Construcción de la BD. 
+        - Cómo genero todas las señales de referencia? 
+            - Ya tengo las señales individuales, me falta ver como las guardo en un único archivo. 
+
+    Hasta ahora estoy evaluando si utilizo ña custom layer de arriba o aplico algoritmos de reinforcement learning. 
+    En este último caso: "That allows an agent to decide the best next action based on its current state" 
+      
+
