@@ -8,6 +8,7 @@ Created on Mon Sep 23 19:53:03 2019
  
 
 from scipy.integrate import ode
+from scipy.integrate import solve_ivp as slv 
 import math as m
 import numpy as np
 import mpl_toolkits.mplot3d.axes3d as p3
@@ -18,6 +19,8 @@ from matplotlib import animation
 from rr import RR_gen
 from deriv_core import dinamic_function
 import variab
+
+import time 
 
 
 plt.close("all")
@@ -43,6 +46,7 @@ def model(param_g, param_A, param_H, theta, a, b, y0):
     #Los cálculos de valores se hace según modelado del paper
     
     hr_factor = np.sqrt(hrmean/60)            #Factor que permite la adaptabilidad de las posiciones al ritmo cardíaco 
+    print(hr_factor)
     fresp = Resp_by_min/60      
 
     #Posición angular de cada Peak
@@ -88,12 +92,15 @@ def model(param_g, param_A, param_H, theta, a, b, y0):
     RR = rr_times[0]                        #Esta definición está aquí para poder iniciar el empaquetamiento para el ODE. 
                                             #Si bien 'RR' actúa como constante, como a lo largo del tiempo debe ser actualizada, aquí sería como especificar otro valor inicial 
 
+    #print(rr_times)
+
     params = [theta_P, theta_Q, theta_R, theta_S, theta_Td, theta_Tu, a_P, a_Q, a_R, a_S, a_Td, a_Tu, b_P, b_Q, b_R, b_S, b_Td, b_Tu, RR, fresp]
     
     
     """#### Utilización del solver ### """
 
-    
+    ode_st = time.time()
+     
     solver = ode(dinamic_function)          #Creación de una instancia del ODE, con la 'dinamic_function' como función llamable
     solver.set_integrator("lsoda")          #Se setea el método de integración
     solver.set_initial_value(y0)            #Se setean los valores iniciales para X, Y, Z
@@ -110,6 +117,33 @@ def model(param_g, param_A, param_H, theta, a, b, y0):
             
         solver.integrate(solver.t+dt)
         psoln.append(solver.y)
+
+    ode_ed = time.time()
+    print(ode_ed-ode_st)
+
+    """### Otra alternativa ####"""
+
+    slv_st = time.time()
+
+    #print(y0)
+    sol = slv(dinamic_function, (t[0],t[-1]),y0,args=[params], dense_output=True, method='LSODA')
+
+    #print(sol.sol(t).shape)
+
+    solz = sol.sol(t)[2]     
+
+    slv_ed = time.time()
+
+    print(slv_ed-slv_st)
+
+    #print(type(sol.y),sol.y.shape)
+    #print(sol.sol(t))
+    
+
+    solzmin = min(solz)
+    solzmax = max(solz)
+    solzrange = solzmax - solzmin
+    solz = (solz - solzmin) * (Amp_ECG)/solzrange
 
     """#### Escalamiento y Ruido ### """
         
@@ -134,7 +168,7 @@ def model(param_g, param_A, param_H, theta, a, b, y0):
     y_values = np.array(psoln).T[1]
     z_values = z
     
-    return x_values, y_values, z_values, t
+    return x_values, y_values, z_values, t, solz
     
 if __name__ == "__main__":
       
@@ -147,8 +181,19 @@ if __name__ == "__main__":
     b_vals = variab.b_vals
     y0 = variab.y0
     
-    x, y, z, t = model(param_gener, param_Artf, param_HVR, theta_vals, a_vals, b_vals, y0)
+    x, y, z, t, z_s = model(param_gener, param_Artf, param_HVR, theta_vals, a_vals, b_vals, y0)
+    
     
     plt.figure()
-    plt.plot(t, z)
+    plt.plot(t, z, label='orig')
+    plt.plot(t,z_s, label='z_s')
+
+    plt.legend()
+
+    print(len(z), len(z_s))
+    
+    print("======")
+    print(sum((np.zeros_like(z) - z)**2))
+    print(sum((z_s - z)**2))
+    print(100*sum((z_s - z)**2)/sum((np.zeros_like(z) - z)**2))
     plt.show()

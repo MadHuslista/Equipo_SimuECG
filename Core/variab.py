@@ -15,16 +15,16 @@ import math as m
 #Parámetros Generales
 
 hrmean = 60                         #Frecuencia Cardíaca
-Resp_by_min = 15                    #Frecuencia Respiratoria
+Resp_by_min = 0#15                    #Frecuencia Respiratoria
 Amp_ECG = 1.7                       #Amplitud Máxima ECG
-n = 10                              #Cantidad de Pulsaciones simuladas
+n = 50                              #Cantidad de Pulsaciones simuladas
 dt = 0.002                           # En segundos
 FPS = 40
 
 #Control de Artefactos
-Anoise = 0.15                       #Amplitud del Ruido Aleatorio
-Hz_Noise = 50                       #Frecuencia de la Interferencia
-Hz_Anoise = 0.05                    #Amplitud de la Interferencia
+Anoise = 0#0.15                       #Amplitud del Ruido Aleatorio
+Hz_Noise = 0#50                       #Frecuencia de la Interferencia
+Hz_Anoise = 0#0.05                    #Amplitud de la Interferencia
 
 
 #Variabilidad del Pulso Cardíaco
