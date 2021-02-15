@@ -96,10 +96,15 @@ Ahora necesito construir los algoritmos de aprendizaje:
     La estrategia será: 
         x Señal de referencia -> Q LEARNING -> 21 param -> COSTO [ Señal de Ref - Señal Construida. ] => NOP, porque al final voy a tener un set de parámetros por señal. Aunque igual sería interesante ver qué valores me da. 
             - Su construcción será el paso 1 para entender como usar TF. 
+
+            - No funciona de manera normal. Hay que construirlo con un ODE propio de tf. No es tan pelúo la verdad, intentarlo. 
+                - https://www.tensorflow.org/probability/api_docs/python/tfp/math/ode/BDF
         
         - Señal de referencia -> MODELO ADAPTADO CON LOS 21 PARAM CMO WEIGHTS -> COSTO [ Señal de Ref - Señal Construida. ] 
             - Esta será la ideal . 
             - Para concretarlo podría ser simplemente contrsuir el paso anterior, pero que tenga sólo una capa! Y que los valores de esos nodos -SEAN- los outputs! 
+
+        
 
     Y la otra será el algoritmo genético. 
         - Se generan subsets -> 10 ondas. 
@@ -108,9 +113,13 @@ Ahora necesito construir los algoritmos de aprendizaje:
         - Luego de esa población escojo a los mejores 
         - Y creo la siguiente generación, que luego se entrena con nuevos subsets (SON RECOMBINADOS) -> con un 60% nuevo (así mantiene un 40% de noción, para que el cambio no sea tan brusco y la mejora gradual) 
 
+    La otra alternativa es utilizar un autoencoder, con el modelo incorporado en el custom decoder. 
+        - https://www.tensorflow.org/tutorials/generative/autoencoder#second_example_image_denoising
+
     Construcción de la BD de Referencia. 
-        - Cómo genero todas las señales de referencia? 
-            - Ya tengo la construcción de las señales individuales, me falta ver como las manipulo. 
+        + Cómo genero todas las señales de referencia? 
+            + Ya tengo la construcción de las señales individuales, me falta ver como las manipulo. 
+            + Done. 
 
 
       

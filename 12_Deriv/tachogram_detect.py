@@ -74,44 +74,45 @@ def extract_heartbeats_RRadapted(signal=None, rpeaks=None, sampling_rate=0, befo
         filt_sig = np.fft.ifft(fft_sig)
 
         #Se reunen y devuelven todos los heartbeats independizados de la señal recibida. 
-        templates.append(filt_sig)
+        templates.append(filt_sig.real)
 
     return templates
 
+if __name__ == "__main__":
 
 
-files = ['03','04','05','06','09','10','13','14']    
-l = []
-for i in files: 
-    l.append(('000'+i+'_hr'))
-    
-
-for f in l: 
-    ecg_l = wfdb.rdsamp(f)
-
-    for i in range(12):
-        signal_l = ecg_l[0].transpose()[i] 
-
-        if ecg_l[1]['sig_name'][i] in ['AVR', 'AVL','V1', 'V2']:
-            #Doy vuelta la señal, así efectivamente toma el R, que en estas derivaciones es negativo
-            signal_l *= -1
-
-        out = ecg.ecg(signal= signal_l, sampling_rate=500., show=False)
-
-        filtered = out['filtered']
-        rpeaks = out['rpeaks']
-        templates = out['templates']
-
-        if ecg_l[1]['sig_name'][i] in ['AVR', 'AVL','V1', 'V2']:
-            #Una vez efectuado el rpocesamiento la desdoy vuelta, para devolverla a su estado original. 
-            filtered *= -1
-
-        t = extract_heartbeats_RRadapted(filtered, rpeaks, 500)
-
+    files = ['03','04','05','06','09','10','13','14']    
+    l = []
+    for i in files: 
+        l.append(('000'+i+'_hr'))
         
 
+    for f in l: 
+        ecg_l = wfdb.rdsamp(f)
 
-        
+        for i in range(12):
+            signal_l = ecg_l[0].transpose()[i] 
+
+            if ecg_l[1]['sig_name'][i] in ['AVR', 'AVL','V1', 'V2']:
+                #Doy vuelta la señal, así efectivamente toma el R, que en estas derivaciones es negativo
+                signal_l *= -1
+
+            out = ecg.ecg(signal= signal_l, sampling_rate=500., show=False)
+
+            filtered = out['filtered']
+            rpeaks = out['rpeaks']
+            templates = out['templates']
+
+            if ecg_l[1]['sig_name'][i] in ['AVR', 'AVL','V1', 'V2']:
+                #Una vez efectuado el rpocesamiento la desdoy vuelta, para devolverla a su estado original. 
+                filtered *= -1
+
+            t = extract_heartbeats_RRadapted(filtered, rpeaks, 500)
+
+            
+
+
+            
 
 
 
