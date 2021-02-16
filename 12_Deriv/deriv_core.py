@@ -31,38 +31,39 @@ import train_variabs as tv
 
 class Derivative_Core: 
 
-    def __init__(self, params, sampling_rate=500,rr=0.9): 
+    def __init__(self, sampling_rate=500,rr=0.9): 
 
-        self.params = list(params)
         self.dt = 1/sampling_rate 
         self.rr = rr
 
         self.hr_factor = np.sqrt((60/rr)/60) #En teoría es np.sqrt(hrmean/60) pero el hrmean se expresa directamente como 60/rr
-        self.y0 = list(self.params[18:])
+        
+    def derivs_calc(self, t,y, params):    
 
         #Desempaquetamiento de variables
-        self.t_P = self.params[0]    * np.sqrt(self.hr_factor)   
-        self.t_Q = self.params[1]    * self.hr_factor            
-        self.t_R = self.params[2]                                
-        self.t_S = self.params[3]    * self.hr_factor            
-        self.t_Td = self.params[4]   * np.sqrt(self.hr_factor)       
-        self.t_Tu = self.params[5]   * np.sqrt(self.hr_factor)   
+        self.t_P = params[0]    * np.sqrt(self.hr_factor)   
+        self.t_Q = params[1]    * self.hr_factor            
+        self.t_R = params[2]                                
+        self.t_S = params[3]    * self.hr_factor            
+        self.t_Td = params[4]   * np.sqrt(self.hr_factor)       
+        self.t_Tu = params[5]   * np.sqrt(self.hr_factor)   
 
-        self.a_P = self.params[6]
-        self.a_Q = self.params[7]
-        self.a_R = self.params[8]
-        self.a_S = self.params[9]
-        self.a_Td = self.params[10]  * (self.hr_factor **(2.5))
-        self.a_Tu = self.params[11]  * (self.hr_factor **(2.5))
+        self.a_P = params[6]
+        self.a_Q = params[7]
+        self.a_R = params[8]
+        self.a_S = params[9]
+        self.a_Td = params[10]  * (self.hr_factor **(2.5))
+        self.a_Tu = params[11]  * (self.hr_factor **(2.5))
 
-        self.b_P = self.params[12]   * self.hr_factor
-        self.b_Q = self.params[13]   * self.hr_factor
-        self.b_R = self.params[14]   * self.hr_factor
-        self.b_S = self.params[15]   * self.hr_factor
-        self.b_Td = self.params[16]  * 1/self.hr_factor
-        self.b_Tu = self.params[17]  * self.hr_factor
+        self.b_P = params[12]   * self.hr_factor
+        self.b_Q = params[13]   * self.hr_factor
+        self.b_R = params[14]   * self.hr_factor
+        self.b_S = params[15]   * self.hr_factor
+        self.b_Td = params[16]  * 1/self.hr_factor
+        self.b_Tu = params[17]  * self.hr_factor
 
-    def derivs_calc(self, t,y):    
+        
+
 
         #Reasignación para comodidad
         X,Y,Z = y
@@ -97,23 +98,23 @@ class Derivative_Core:
         ]        
         return derivs
         
-    def calc_model(self):
+    def calc_model(self, p):
 
-        #Calculo de la Señal
+        #Cálculo de la Señal
             #Como el modelo inicia en ángulo 0, pero el heartbeat se describe durante el rango [-pi:+pi]
             #Ocurre que de calcular sólo 1 heartbeat se obtiene la mitad posterior del primero + la mitad anterior del segundo. 
             #Por tanto, se calculan 2 heartbeats para así obtener un heartbeat completo. 
 
-        y0 = self.y0
-        params = self.params[:18]
-
+        params  = p[:18]
+        y0      = p[18:]
+    
         ti = 0
         tf = self.rr *2 #Determinación de los dos heartbeats de igual RR 
 
         samples = int(tf/self.dt)
         self.t = np.linspace(ti,tf,samples)
         
-        self.sol = slv(self.derivs_calc, (ti,tf),y0, dense_output=True, method='LSODA')    
+        self.sol = slv(self.derivs_calc, (ti,tf),y0, args=[params], dense_output=True, method='LSODA')    
         solz = self.sol.sol(self.t)[2]
 
         #Extracción del HeartBeat
@@ -143,11 +144,11 @@ if __name__ == "__main__":
     p2[-1] = 0
 
 
-    sig = Derivative_Core(p, sampling_rate, rr)
-    t, z = sig.calc_model()
+    sig = Derivative_Core(sampling_rate, rr)
+    t, z = sig.calc_model(p)
 
-    sig2 = Derivative_Core(p2,sampling_rate, rr)
-    t2, z2 = sig2.calc_model()
+    sig2 = Derivative_Core(sampling_rate, rr)
+    t2, z2 = sig2.calc_model(p2)
 
     print(len(z))
     
