@@ -135,7 +135,7 @@ class Derivative_Core:
         zmin = min(z)
         zmax = max(z)
         zrange = zmax - zmin
-        z = (z - zmin)*(gv.Amp_ECG)/zrange                
+        z = z*(gv.Amp_ECG)/zrange                
 
         return t, z     
 
