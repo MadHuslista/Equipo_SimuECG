@@ -5,8 +5,6 @@ import wfdb
 import random as rnd 
 import time
 
-ecg_recover = wfdb.rdsamp("Derivations_Data/BD_II_signal")
-sign_recover = ecg_recover[0].transpose()
 
 def create_subsets(signal, retain_pctg=0, batch_size=10): 
     
@@ -69,10 +67,12 @@ def create_subsets(signal, retain_pctg=0, batch_size=10):
 
     return subsets
 
+if __name__ == "__main__":
 
+    ecg_recover = wfdb.rdsamp("Derivations_Data/BD_II_signal")
+    sign_recover = ecg_recover[0].transpose()
 
-
-s = create_subsets(sign_recover)
-f = create_subsets(s, 0.6)
+    s = create_subsets(sign_recover)
+    f = create_subsets(s, 0.6)
 
 
