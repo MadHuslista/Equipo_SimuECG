@@ -47,12 +47,13 @@ class Generation():
         #y0 = [random.uniform(0, 1) for i in range(3)]
         #new_params = t + a + b + y0
 
-        for i in range(len(best_params)): 
+        for i in range(6,len(best_params)-3): 
             
             if random.random() < self.mut_prob:
-                print("    Mutation!")
-                k = random.uniform(-0.5,1.5)
+                print("    Mutation! {}".format(i))
+                k = random.uniform(-0.9,1.1)
                 best_params[i] = best_params[i] * k
+                break
 
         mutated_Child = Learner(batch, best_params)
 
@@ -78,11 +79,11 @@ class Generation():
         #print(len(self.childs))
         i = 0
         for child in self.childs: 
-            print(i)
+            #print(i)
             for err in child.calc_error(): 
 
                 if err >= sec_best: 
-                    print("   x")
+                    #print("   x")
                     break
 
             else: 

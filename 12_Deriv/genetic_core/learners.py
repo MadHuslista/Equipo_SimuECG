@@ -5,6 +5,7 @@ import math as m
 import matplotlib.pyplot as plt 
 import gen_variabs as gv 
 from genderiv_core import Derivative_Core
+import numpy as np 
 
 class Learner(): 
 
@@ -22,6 +23,7 @@ class Learner():
 
         self.error = 0
         self.batch = batch
+        self.base = sum(sum(np.array(batch)**2))
         self.Sig_Core = Derivative_Core()
         self.signal = self.Sig_Core.calc_model(self.params)
 
@@ -50,6 +52,8 @@ if __name__ == "__main__":
     p = gv.theta_vals + gv.a_vals + gv.b_vals + gv.y0
     a = Learner(s,p)
     
-    plt.plot(a.signal[1])
+    for i in s: 
+        plt.plot(i,c='g')
+    plt.plot(a.signal[1],c='r')
     plt.show()
     
