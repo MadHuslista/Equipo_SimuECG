@@ -3,14 +3,13 @@ from learners import Learner
 import math as m
 import wfdb
 import numpy as np
-from gen_setup import create_subsets
 import random
 import matplotlib.pyplot as plt 
 import gen_variabs as gv 
 
 class Generation(): 
 
-    def __init__(self, subset, params=0,gen =1, mut_prob=0.002, aleat_params = False): 
+    def __init__(self, signal, popu_size=100, params=0,gen =1, mut_prob=0.002, aleat_params = False): 
 
         self.gen = gen
         self.mut_prob = mut_prob
@@ -25,16 +24,16 @@ class Generation():
 
         if not(aleat_params): 
 
-            child = Learner(subset[0], params)        
+            child = Learner(signal, params)        
             self.childs.append(child)
 
-            for batch in subset[1:]: 
-                child = self.get_mutatedChild(batch, params)
+            for person in range(popu_size-1): 
+                child = self.get_mutatedChild(signal, params)
                 self.childs.append(child)
 
         else: 
-            for batch in subset: 
-                child = Learner(batch)
+            for person in range(popu_size-1): 
+                child = Learner(signal)
                 self.childs.append(child)
 
         print("  Childs created. Gen: ", self.gen)
@@ -77,23 +76,28 @@ class Generation():
         sec_best = m.inf
 
         #print(len(self.childs))
-
+        i = 0
         for child in self.childs: 
-            
+            print(i)
             for err in child.calc_error(): 
 
                 if err >= sec_best: 
+                    print("   x")
                     break
+
             else: 
                 if err < fir_best: 
                     self.best_childs[0] = child
                     fir_best = err
                 elif fir_best < err < sec_best: 
                     self.best_childs[1] = child 
-                    sec_best = err
-        
+                    sec_best = err        
         #    print(fir_best, sec_best)
-        #print(self.best_childs)
+            i += 1
+        else: 
+            if self.best_childs[1] == -1:
+                self.best_childs[1] = self.best_childs[0]
+                print('gotcha')
 
         print("  Search ended. Gen: ", self.gen)
         
@@ -126,12 +130,16 @@ if __name__ == "__main__":
     ecg_recover = wfdb.rdsamp("Derivations_Data/BD_II_signal")
     s = ecg_recover[0].transpose()
 
-    s = create_subsets(s)        
+    
     p = gv.theta_vals + gv.a_vals + gv.b_vals + gv.y0
 
     print('done')
 
-    b = Generation(s,p)
+    b = Generation(s,5,p)
+    print(len(b.childs))
+    a = b.find_BestChilds()
+
+    print(a[0].error,a[1].error)
     
     for i in b.childs: 
         plt.plot(i.signal[1])

@@ -9,19 +9,24 @@ import gen_variabs as gv
 
 class Training(): 
 
-    def __init__(self, signal, generations, params=0): 
+    def __init__(self, signal, generations, population_size=100, params=0): 
 
         print("Inicio Entrenamiento")
-        self.subsets = self.create_subsets(signal)
+        self.signal = signal
         self.generations = generations
+        self.population_size = population_size
+
         self.best_genes = []
         self.err_history = []
         self.p_history = []
+        
+        
 
         if not(params):
-            self.Gen = Generation(self.subsets,aleat_params=True)
+            #self, signal, popu_size=100, params=0,gen =1, mut_prob=0.002, aleat_params = False): 
+            self.Gen = Generation(self.signal,self.population_size, aleat_params=True)
         else: 
-            self.Gen = Generation(self.subsets,params)
+            self.Gen = Generation(self.signal,self.population_size, params)
             
 
         print("Generación Inicial creada")
@@ -60,14 +65,15 @@ class Training():
             print("-> ", self.Gen.gen)
             print("Evolution Gen: ", self.Gen.gen)
 
-            self.subsets = self.create_subsets(self.subsets, 0.6)
-
             if mut_boom >= 10: 
                 print("                                        MUT BOOM!")
-                self.Gen = Generation(self.subsets, best_params, new_gen, mut_prob=0.005 )    
+                self.Gen = Generation(self.signal, self.population_size, best_params, new_gen, mut_prob=0.005 )    
                 mut_boom = 0
             else: 
-                self.Gen = Generation(self.subsets, best_params, new_gen)    
+                self.Gen = Generation(self.signal, self.population_size, best_params, new_gen)
+
+        else: 
+            self.best_genes = best_params    
 
 
     def create_subsets(self, signal, retain_pctg=0, batch_size=10): 
@@ -134,38 +140,47 @@ class Training():
 
 if __name__ == "__main__": 
 
-
+    #Lectura de la BD de Derivación
     ecg_recover = wfdb.rdsamp("Derivations_Data/BD_II_signal")
     print('Signal Readed')
     s = ecg_recover[0].transpose()
+ 
+    #Obtención de Parámetros de Partida
     p = gv.theta_vals + gv.a_vals + gv.b_vals + gv.y0
+    #Orig = Learner(1,p)
+    
+    #Reducción opcional de la señal. Para pruebas rápidas. 
+    s = s[:100]
 
-    #s = s[:100]
-
-
-
-    T = Training(s,100,p)
+    #Construcción del Ambiente de Entrenamiento
+    T = Training(s,generations=100, population_size=50,params=p)
     T.evolution()
 
-    p = T.best_genes
-    g = Learner(1,p)
 
+    #Obtención del último mejor set de parámetros
+    LB_params = T.best_genes
+    Last_Best = Learner(1,LB_params)
+
+    #Obtención del históricamente mejor set de parámetros
+    min_err = min(T.err_history)
+    min_i = T.err_history.index(min_err)
+    HB_params = T.p_history[min_i]
+    Hist_Best = Learner(1,HB_params)
+
+    #Ploteo de la evolución del error
     plt.plot(T.err_history)
     plt.show()
 
+    #Ploteo de las señales originales. 
     plt.figure()
     for i in s: 
         plt.plot(i, c='g')
-    plt.plot(g.signal[1], c = 'r', label = "Last_Best")
 
-    min_err = min(T.err_history)
-    min_i = T.err_history.index(min_err)
-
-    b_p = T.p_history[min_i]
-
-    h = Learner(1,p)
-
-    plt.plot(h.signal[1], c = 'b', label = "Hist_Best")
+    #Ploteo del Último mejor y el Históricamente Mejor
+#    plt.plot(Orig.signal[1], c = 'y', label = "Orig")
+    plt.plot(Last_Best.signal[1], c = 'r', label = "Last_Best")
+    plt.plot(Hist_Best.signal[1], c = 'b', label = "Hist_Best")
+    
     plt.legend()
 
 
