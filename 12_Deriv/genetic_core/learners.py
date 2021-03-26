@@ -4,7 +4,8 @@ import random
 import math as m 
 import matplotlib.pyplot as plt 
 import gen_variabs as gv 
-from genderiv_core import Derivative_Core
+from genderiv_core import Derivative_Core 
+import numpy as np 
 
 class Learner(): 
 
@@ -22,6 +23,7 @@ class Learner():
 
         self.error = 0
         self.batch = batch
+        #self.base = sum(sum(np.array(batch)**2))
         self.Sig_Core = Derivative_Core()
         self.signal = self.Sig_Core.calc_model(self.params)
 
@@ -47,9 +49,9 @@ if __name__ == "__main__":
     ecg_recover = wfdb.rdsamp("Derivations_Data/BD_II_signal")
     s = ecg_recover[0].transpose()
 
+    s = s[0:10]
+
     p = gv.theta_vals + gv.a_vals + gv.b_vals + gv.y0
     a = Learner(s,p)
-    
-    plt.plot(a.signal[1])
-    plt.show()
+
     
