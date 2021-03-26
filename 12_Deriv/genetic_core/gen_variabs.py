@@ -16,12 +16,12 @@ import numpy as np
 #FS y RR
 dt = 0.002                          # En segundos 500Hz
 RR = 0.9                            # RR normalizado a 900ms
-Amp_ECG = 1.2
+Amp_ECG = 0.8
 #Posición angular de cada Peak
-theta_P = -(1/3)*m.pi 
-theta_Q = -(1/12)*m.pi 
+theta_P = -(1/3)*m.pi           -0.1
+theta_Q = -(1/12)*m.pi          +0.1
 theta_R = 0
-theta_S = (1/12)*m.pi 
+theta_S = (1/12)*m.pi           -0.1
 theta_Td = ((5/9)-(1/60))*m.pi 
 theta_Tu = (5/9)*m.pi 
 
@@ -55,3 +55,6 @@ b_vals      = [b_P, b_Q, b_R, b_S, b_Td, b_Tu]
 y0 = [X0, Y0, Z0] 
 
 #En resumen mi modelo tiene thetha(6) + a(6) + b(6) + y0(3) = 21 parámetros. 
+
+if __name__ == "__main__": 
+    print(theta_vals, a_vals, b_vals)
