@@ -107,7 +107,8 @@ class Derivative_Core:
             #Por tanto, se calculan 2 heartbeats para así obtener un heartbeat completo. 
 
         params  = p[:18]
-        y0      = p[18:]
+        y0      = p[18:21]
+        amp_ecg = abs(p[21])
     
         ti = 0
         tf = self.rr *2 #Determinación de los dos heartbeats de igual RR 
@@ -135,8 +136,8 @@ class Derivative_Core:
         zmin = min(z)
         zmax = max(z)
         zrange = zmax - zmin
-        z = z*(gv.Amp_ECG)/zrange                
-
+        z = z*(amp_ecg)/zrange                
+        #print(amp_ecg)
         return t, z     
 
 
