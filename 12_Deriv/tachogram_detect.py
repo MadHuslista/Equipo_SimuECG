@@ -52,6 +52,7 @@ def extract_heartbeats_RRadapted(signal=None, rpeaks=None, sampling_rate=0, befo
         norm_rr = rr_norm_interval * sampling_rate
         norm_bef =  int(before* float(norm_rr)/float(ref_rr))
         norm_aft =  int(after* float(norm_rr)/float(ref_rr))
+        
 
         #Ejecuto el resampleo. Se efectúa aún por parte para mantener la posición coordinada del R en todos los HR. 
         a_sig = scp_sig.resample(a_sig, norm_bef)
@@ -76,6 +77,10 @@ def extract_heartbeats_RRadapted(signal=None, rpeaks=None, sampling_rate=0, befo
         #Se reunen y devuelven todos los heartbeats independizados de la señal recibida. 
         templates.append(filt_sig.real)
 
+    #for i in templates:
+    #    plt.plot(i)
+    #plt.show()
+
     return templates
 
 if __name__ == "__main__":
@@ -84,13 +89,13 @@ if __name__ == "__main__":
     files = ['03','04','05','06','09','10','13','14']    
     l = []
     for i in files: 
-        l.append(('000'+i+'_hr'))
+        l.append(('Data/ptb-xl/records500/00000/000'+i+'_hr'))
         
 
-    for f in l: 
+    for f in l[:4]: 
         ecg_l = wfdb.rdsamp(f)
 
-        for i in range(12):
+        for i in range(1):
             signal_l = ecg_l[0].transpose()[i] 
 
             if ecg_l[1]['sig_name'][i] in ['AVR', 'AVL','V1', 'V2']:
@@ -107,7 +112,14 @@ if __name__ == "__main__":
                 #Una vez efectuado el rpocesamiento la desdoy vuelta, para devolverla a su estado original. 
                 filtered *= -1
 
-            t = extract_heartbeats_RRadapted(filtered, rpeaks, 500)
+            t = extract_heartbeats_RRadapted(filtered, rpeaks, 500,before=0.5, after=0.5)
+
+            for i in t: 
+                plt.plot(i)
+                print(len(i))
+    
+    plt.show()
+
 
             
 

@@ -3,7 +3,7 @@ import wfdb
 import matplotlib.pyplot as plt 
 from biosppy.signals import ecg
 from tachogram_detect import extract_heartbeats_RRadapted
-from norm_data import files
+from normdata_paths import files
 import time 
 
 sampling_rate = 500.
@@ -42,7 +42,7 @@ for i in derivations:
             #Una vez efectuado el rpocesamiento la desdoy vuelta, para devolverla a su estado original. 
             filtered *= -1
 
-        t = extract_heartbeats_RRadapted(out['filtered'], out['rpeaks'], sampling_rate)
+        t = extract_heartbeats_RRadapted(out['filtered'], out['rpeaks'], sampling_rate,before=0.5, after=0.5)
 
         ch = [ f[-8:-3] + '-' + str(i) for i in range(len(t))]
         
