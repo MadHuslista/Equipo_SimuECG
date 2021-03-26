@@ -43,6 +43,7 @@ def create_subsets(signal, retain_pctg=0, batch_size=10):
         for batch in signal:
             retain_pos = int((len(batch) * retain_pctg))
 
+            rnd.shuffle(batch)
             torandom_pool.extend(batch[retain_pos:])
             remain_subset.append(batch[:retain_pos])
         
@@ -73,6 +74,13 @@ if __name__ == "__main__":
     sign_recover = ecg_recover[0].transpose()
 
     s = create_subsets(sign_recover)
+
+    for i in s[0]: 
+        print(sum(i))
     f = create_subsets(s, 0.6)
+
+    print()
+    for i in f[0]: 
+        print(sum(i))
 
 
