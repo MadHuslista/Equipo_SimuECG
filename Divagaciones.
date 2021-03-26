@@ -107,11 +107,12 @@ Ahora necesito construir los algoritmos de aprendizaje:
         
 
     Y la otra será el algoritmo genético. 
-        - Se generan subsets -> 10 ondas. 
-        - Efectúo alguna optimización sobre la minimización del error sumado de todo el subset. (onda ERR = SUM[ {i to subset} (subsetsignal_i - sig_construida)] 
+        + Se generan subsets -> 10 ondas. 
+        + Efectúo alguna optimización sobre la minimización del error sumado de todo el subset. (onda ERR = SUM[ {i to subset} (subsetsignal_i - sig_construida)] 
         - Y sobre esto genero una optimización local del subset hasta lo más que se pueda. 
-        - Luego de esa población escojo a los mejores 
-        - Y creo la siguiente generación, que luego se entrena con nuevos subsets (SON RECOMBINADOS) -> con un 60% nuevo (así mantiene un 40% de noción, para que el cambio no sea tan brusco y la mejora gradual) 
+            - Aquí se podría hacer una búsqueda de gradiente por subset. 
+        + Luego de esa población escojo a los mejores 
+        + Y creo la siguiente generación, que luego se entrena con nuevos subsets (SON RECOMBINADOS) -> con un 60% nuevo (así mantiene un 40% de noción, para que el cambio no sea tan brusco y la mejora gradual) 
 
     La otra alternativa es utilizar un autoencoder, con el modelo incorporado en el custom decoder. 
         - https://www.tensorflow.org/tutorials/generative/autoencoder#second_example_image_denoising
