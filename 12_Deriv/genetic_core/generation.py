@@ -20,7 +20,7 @@ class Generation():
         self.best_childs = [-1,-1]        
         self.best_genes = []
 
-        print("  Creating Childs gen: ", self.gen)
+        print("  Creating {} Childs gen: {}".format(len(subset), self.gen))
 
 
         if not(aleat_params): 
@@ -48,12 +48,13 @@ class Generation():
         #y0 = [random.uniform(0, 1) for i in range(3)]
         #new_params = t + a + b + y0
 
-        for i in range(len(best_params)): 
+        for i in range(6,len(best_params)-4): 
             
             if random.random() < self.mut_prob:
-                print("    Mutation!")
-                k = random.uniform(-0.5,1.5)
-                best_params[i] = best_params[i] * k
+                print("    Mutation! {}".format(i))
+                k = random.uniform(-0.01,0.01)
+                best_params[i] = best_params[i] + k
+                break
 
         mutated_Child = Learner(batch, best_params)
 
@@ -94,6 +95,11 @@ class Generation():
         
         #    print(fir_best, sec_best)
         #print(self.best_childs)
+        else: 
+            if self.best_childs[1] == -1:
+                self.best_childs[1] = self.best_childs[0]
+                print('gotcha')
+
 
         print("  Search ended. Gen: ", self.gen)
         
@@ -127,7 +133,7 @@ if __name__ == "__main__":
     s = ecg_recover[0].transpose()
 
     s = create_subsets(s)        
-    p = gv.theta_vals + gv.a_vals + gv.b_vals + gv.y0
+    p = gv.theta_vals + gv.a_vals + gv.b_vals + gv.y0 + [-0.98765]
 
     print('done')
 
