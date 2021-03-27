@@ -9,7 +9,11 @@ import matplotlib.pyplot as plt
 import gen_variabs as gv 
 
 class Generation(): 
-
+    """
+    Este objeto controla los procesos de selección 'natural' asociados a la evolución: 
+        1.- En su inicialización recibe la BD que viene ppreviamente organizada en batches, y crea un nuevo 'Learner' por cada batch. 
+        2.- Dentro de sus métodos implementa los procesos de selección del mejor 'Learner', mutación y crossover, 
+    """
     def __init__(self, subset, params=0,gen =1, mut_prob=0.002, aleat_params = False): 
 
         self.gen = gen
@@ -23,16 +27,16 @@ class Generation():
         print("  Creating {} Childs gen: {}".format(len(subset), self.gen))
 
 
-        if not(aleat_params): 
+        if not(aleat_params):                                   #En el caso que sí recibe un set de parámetros base
 
-            child = Learner(subset[0], params)        
+            child = Learner(subset[0], params)                  #Crea el primer 'Learner' en base a estos parámetros
             self.childs.append(child)
 
-            for batch in subset[1:]: 
+            for batch in subset[1:]:                            #Y luego crea el resto de Learners en base a versiones mutadas de estos parámetros. 
                 child = self.get_mutatedChild(batch, params)
                 self.childs.append(child)
 
-        else: 
+        else:                                                   #De no recibir parámetros, crea Learner en base a parámetros aleatorios. 
             for batch in subset: 
                 child = Learner(batch)
                 self.childs.append(child)
@@ -41,6 +45,9 @@ class Generation():
 
 
     def get_mutatedChild(self,batch, best_params): 
+        """
+        Genera Learnes en base a versiones mutadas de los parámetros best_params recibidos.
+        """
 
         #t = [random.uniform(-m.pi, m.pi) for i in range(6)]
         #a = [random.uniform(-30, 30) for i in range(6)]
@@ -48,9 +55,9 @@ class Generation():
         #y0 = [random.uniform(0, 1) for i in range(3)]
         #new_params = t + a + b + y0
 
-        for i in range(6,len(best_params)-4): 
+        for i in range(6,len(best_params)-4):           #Aquí se limita los parámetros sujetos a posible randomización, dejando fuera las posiciones theta y los valores iniciales y0
             
-            if random.random() < self.mut_prob:
+            if random.random() < self.mut_prob:         
                 print("    Mutation! {}".format(i))
                 k = random.uniform(-0.01,0.01)
                 best_params[i] = best_params[i] + k
@@ -61,31 +68,37 @@ class Generation():
         return mutated_Child                
 
     def find_BestGenes(self): 
+        """
+        Identifica el set de parámetros que provocó el menor error. 
+        """
 
-        self.find_BestChilds()
+        self.find_BestChilds()                          #Selecciona los mejores Learners
 
-        self.best_genes = self.crossover()
+        self.best_genes = self.crossover()              #Y obtiene el resultado del crossover de los parámetros de ambos.
         #self.best_genes = self.best_childs[1].params
 
         return self.best_genes
 
         
     def find_BestChilds(self): 
+        """
+        Identifica los mejores Learners
+        """
 
         print("  Searching for the best childs. Gen: ", self.gen)
 
-        fir_best = m.inf
+        fir_best = m.inf                                    #Identifica el primer y segundo mejor
         sec_best = m.inf
 
         #print(len(self.childs))
 
-        for child in self.childs: 
+        for child in self.childs:                           #Por cada Learner creado
             
-            for err in child.calc_error(): 
+            for err in child.calc_error():                  #Solicita el valor del error acumulado, pulso a pulso de cada batch (revisar Learner.calc_error(). Recordar que por eficiencia es un iterador)
 
-                if err >= sec_best: 
+                if err >= sec_best:                         #Si el error acumulado supera al segundo mejor actual, se descarta  el actual Learner y se pasa al siguiente. 
                     break
-            else: 
+            else:                                           #Si el error acumulado no supera el segundo mejor, se selecciona como nuevo primer o segundo mejor. 
                 if err < fir_best: 
                     self.best_childs[0] = child
                     fir_best = err
@@ -95,7 +108,7 @@ class Generation():
         
         #    print(fir_best, sec_best)
         #print(self.best_childs)
-        else: 
+        else:                                               #Una vez finalizado la medición, en el caso de que no haya segundo mejor, se duplica el primer mejor. 
             if self.best_childs[1] == -1:
                 self.best_childs[1] = self.best_childs[0]
                 print('gotcha')
@@ -103,10 +116,16 @@ class Generation():
 
         print("  Search ended. Gen: ", self.gen)
         
-        return self.best_childs
+        return self.best_childs                             
 
             
     def crossover(self): 
+
+        """
+        Combinación de los genes.
+        Se selecciona una posición arbitraria y se efectúa el cruce mantiendo siempre la mayor porción del mejor Learner. 
+        """
+
         child1 = self.best_childs[0].params
         child2 = self.best_childs[1].params
 

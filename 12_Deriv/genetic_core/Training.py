@@ -8,18 +8,55 @@ import matplotlib.pyplot as plt
 import gen_variabs as gv 
 import time 
 
+
+"""
+La evolución está coordinada en torno al objeto 'Learner'
+    Este objeto desarrolla sólo dos cosas: 
+        1.- Para su inicialización construye un pulso ECG en base al modelo de McSharry y los parámetros entregados, e incorpora como atributo en 'batch' de pulsos entregado desde la BD
+        2.- Posee un Método para el cálculo del error acumulado entre el 'batch' entregado y la señal pulso construida. 
+
+Para controlar los procesos selección 'natural' asociados a la evolución, está el objeto 'Generation'
+    Este objeto desarrolla lo siguiente: 
+        1.- En su inicialización simplemente recibe la BD que viene ppreviamente organizada en batches, y crea un 'Learner' por cada batch. 
+        2.- Y dentro de sus métodos implementa los procesos de selección del mejor 'Learner', mutación y crossover, 
+
+Por último, para configurar y dirigir la evolución se crea un Entorno de Entrenamiento en base a la clase 'Training' 
+    Este objeto desarrolla lo siguiente: 
+        1.- En su inicialización: 
+            - configura el número de generaciones a entrenar, 
+            - toma la BD de pulsos individuales reordenandola en subsets con n pulsos cada subset; 
+            - e instancia la clase 'Generation' en el atributo self.Gen en base a la BD reordenada en subsets y, de existirlos, parámetros base
+
+        2.- Para dirigir el entrenamiento posee el método 'evolution' que: 
+            - controla el Avance de Generaciones 
+            - Dirige los procesos de evolución, solicitándolos al objeto self.Gen
+            - registra los menores valores de error por cada generación 
+            - y ejecuta acciones en el caso de que la mejora sea demasiado lenta, o tienda a retroceder. 
+
+"""
+
+#Clase que controla el entrenamiento completo
 class Training(): 
 
     def __init__(self, signal, generations, params=0): 
+        """
+        Construcción del Entorno de Entrenamiento
+                signal      = BD con n pulsos individuales
+                generations = el número de generaciones que entrenará
+                params      = parametros de partida. (genes) 
+        """
 
         print("Inicio Entrenamiento")
-        self.subsets = self.create_subsets(signal)
-        self.generations = generations
-        self.best_genes = []
-        self.err_history = []
+        self.subsets = self.create_subsets(signal)      #Reordena la BD en 'batches'
+        self.generations = generations                  #Incorpora la generación
+        self.best_genes = []                            #Guardará los parámetros que generen menos error
+        
+        #Atributos de Registro
+        self.err_history = []   
         self.p_history = []
         self.pcg_history = []
 
+        #Creación del Atributo que se encargará de controlar a los Individuos. 
         if not(params):
             self.Gen = Generation(self.subsets,aleat_params=True)
         else: 
@@ -31,32 +68,37 @@ class Training():
 
     def evolution(self): 
 
+        """
+        Control de la Evolución.
+        """
+
         print("-> ", self.Gen.gen)
         print("Evolution Gen: ", self.Gen.gen)
 
-        mut_boom = 0
-        stuckness = 0
-        for i in range(self.generations): 
+        mut_boom = 0     #Mide cantidad de generaciones con poco cambio, desencadenando un leve aumento temporal en la probabilidad de mutación
+        stuckness = 0    #Mide cantidad de generaciones con cero cambio, desencadenando un gran aumento temporal en la probabilidad de mutación
 
-            best_params = self.Gen.find_BestGenes()
+        for i in range(self.generations):                                                               #Regula el avance de generación
+
+            best_params = self.Gen.find_BestGenes()                                                     #Obtiene los mejores genes (implícitamente se determinan los dos mejores 'Learners' y se efectúa un crossover entre sus parámetros)
         
-            best_err = self.Gen.best_childs[0].error
-            base = self.Gen.best_childs[0].base
+            best_err = self.Gen.best_childs[0].error                                                    #Se obtiene el menor error y se calcula su % de error respecto a la sumatoria del batch sobre el que trabajó el Learner. 
+            base = self.Gen.best_childs[0].base                                                         
             pct_err = 100*best_err/base
 
-            if i > 1: 
+            if i > 1:                                                                                   #Evita el retroceso en el aprendizaje
                 if pct_err > self.pcg_history[-1]:
                     best_params = self.p_history[-1]
                     best_err = self.err_history[-1]
                     pct_err = self.pcg_history[-1]
                     print('same_param')
 
-            self.err_history.append(best_err)
+            self.err_history.append(best_err)                                                           #Registro
             self.p_history.append(best_params)
             self.pcg_history.append(pct_err)
 
-            change_rate = 1
-            if i > 5:
+            change_rate = 1 
+            if i > 5:                                                                                   #Estimula la mutación en caso de que la mejora sea poca o nula         
                 #change_rate = abs((best_err - self.err_history[-2])/self.err_history[-2])
                 change_rate = abs((pct_err - self.pcg_history[-2])/self.pcg_history[-2])
                 if change_rate < 0.2 : 
@@ -68,11 +110,11 @@ class Training():
                 if change_rate == 0: 
                     stuckness += 1
             
-            if stuckness > 100: 
+            if stuckness > 100:                                                                         #Termina el aprendizaje si no hay mejora por más de 100 generaciones
                 #pass
                 break
 
-            print("Best Err: ", best_err)
+            print("Best Err: ", best_err)                                                               #Logs
             print("Base Val: ", base)
             print("Perc Err: ", pct_err)
             print("M Boom: ", mut_boom, "Stuck: ", stuckness, "Ch_Rate: ", change_rate)
@@ -84,7 +126,7 @@ class Training():
             print("-> ", self.Gen.gen)
             print("Evolution Gen: ", self.Gen.gen)
 
-            new_gen = self.Gen.gen + 1
+            new_gen = self.Gen.gen + 1                                                                  #Creación de la nueva generación                
             self.subsets = self.create_subsets(self.subsets, 0.6)
         
             if mut_boom >= 10: 
@@ -95,68 +137,76 @@ class Training():
                 self.Gen = Generation(self.subsets, best_params, new_gen)    
         
         else: 
-            self.best_genes = best_params
+            self.best_genes = best_params                                                               #Una vez terminado el entrenamiento, devuelve los mejores parámetros obtejidos. 
 
 
     def create_subsets(self, signal, retain_pctg=0, batch_size=10): 
+
+        """
+        Controla la creación de nuevos Subsets. Puede tomar dos comportamientos:
+        1.- Si sólo se entrega una BD, asume que es una BD original con n pulsos individuales, y retorna un objeto con la misma BD reorganizada en m batches de tamaño batch_size (m = n // batch_size + 1)
+        2.- De de indicarse un retain_pctg junto con la  BD, asume que recibe una BD organizada en m batches, y efectúa una randomización de toda la BD generando nuevos batches. 
+            - Cada uno de estos nuevos batches mantiene un porcentaje retain_pctg del 100% de los pulsos contenidos en el batch correspondiente original, 
+              enviando el % restante a un pool para su randomización. 
+            - Efectuado esto, los nuevos batch completan su 100% = batch_size, tomando pulsos al azar del pool recién randomizado. 
+        
+        """
     
-        if not(retain_pctg):
+        if not(retain_pctg):                                    #Comportamiento n° 1
 
-            signal = np.array(signal)
+            signal = np.array(signal)                           #Asegura que sea un array numpy
 
-            sig_cant = signal.shape[0]
+            sig_cant = signal.shape[0]                          #Determina el n de pulsos individuales
 
-            indexs = np.arange(0,sig_cant,1)
+            indexs = np.arange(0,sig_cant,1)                    #Genera un guía para tomar los pulsos de manera random
             rnd.shuffle(indexs)
 
-            subsets = []
-            batch = []
-            batch_quantity = 0
+            subsets = []                                        #Objeto que contendrá la BD reorganizada que se retornará
+            batch = []                                          #Objeto intermediario para la creación de cada batch
+            batch_quantity = 0                                  #Registro de la cantidad de batchs credaos
 
-            for i in indexs: 
+            for i in indexs:                                    #Aprovechando el azar contenido en la lista indexs, se crea cada batch.
 
-                if len(batch) < batch_size:
+                if len(batch) < batch_size:                     #Agrega pulsos al objeto intermediario
                     batch.append(signal[i])
-                else: 
-                    b_copy = list(batch)
-                    subsets.append(b_copy)
-                    batch = []
-                    batch.append(signal[i])
-                    batch_quantity += 1
+                else:                                           #Si el batch intermediario alcanza el batch_size
+                    b_copy = list(batch)                        #Crea una copia independiente del batch creado 
+                    subsets.append(b_copy)                      #Y lo agrega al subsets
+                    batch = []                                  #Vacía el objeto intermediario
+                    batch.append(signal[i])                     #Y guarda el pulso actual.
+                    batch_quantity += 1                         #Registra la creación del batch
             else: 
-                subsets.append(list(batch))
-                batch_quantity += 1
+                subsets.append(list(batch))                     #Una vez terminado con los pulsos, adiciona el batch con los pulsos restantes
+                batch_quantity += 1                             #Y lo registra. 
 
-        else: 
+        else:                                                   #Comportamiento n° 2
 
-            torandom_pool = []
-            remain_subset = []
+            torandom_pool = []                                  #Objeto que contendrá el pool a randomizar
+            remain_subset = []                                  #Objeto que contendrá los batches retenidos
 
-            for batch in signal:
-                retain_pos = int((len(batch) * retain_pctg))
+            for batch in signal:                                #Por cada batch en la BD
+                retain_pos = int((len(batch) * retain_pctg))    #Determina la cantidad de pulsos que se mantendrán en el batch
 
-                rnd.shuffle(batch)
-                torandom_pool.extend(batch[retain_pos:])
-                remain_subset.append(batch[:retain_pos])
+                rnd.shuffle(batch)                              #Randomiza el batch, para que los pulsos mantenidos no sean siempre los mismos
+                torandom_pool.extend(batch[retain_pos:])        #Envía los pulsos que no se mantendrán, al pool a randomizar
+                remain_subset.append(batch[:retain_pos])        #Envía el batch con los pulsos mantenidos.
             
-            indexs = np.arange(0,len(torandom_pool),1)
+            indexs = np.arange(0,len(torandom_pool),1)          #Ejecuta la randomización del pool. 
             rnd.shuffle(indexs)
             indexs = iter(indexs)
 
-        
-            
-            for batch in remain_subset: 
+            for batch in remain_subset:                         #Por cada batch retenido
 
                 try: 
-                    while len(batch) < batch_size: 
+                    while len(batch) < batch_size:              #Y mientras el batch no alcance el batch_size
                     
-                        i = next(indexs)
-                        batch.append(torandom_pool[i])
+                        i = next(indexs)                        #Toma una posición previamente randomizada 
+                        batch.append(torandom_pool[i])          #Y agrega el pulso correspondiente al batch    
                 except: 
-                    break
+                    break                                       #Este except controla la finalización de la completación de los batches. Se encuentra a la escucha del error que ocurrirá cuando el interador 'indexs' se termine, y al detectarlo, lo captura y envía la señal de finalzación del for.
                 
             
-            subsets = remain_subset
+            subsets = remain_subset                             #Renombra la BD construida. 
         
         return subsets
 
