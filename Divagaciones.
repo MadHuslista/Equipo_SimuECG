@@ -1,0 +1,127 @@
+El problema: 
+    - Tengo un grupo de parámetros a optimizar tal que logren generar un cierto set de datos. 
+
+Caracterízación del Problema: 
+
+I : reinforcement learning problem.
+O : regression problem
+
+continuous function optimization, 
+    - where the input arguments to the function are real-valued numeric values, e.g. floating point values. 
+    - The output from the function is also a real-valued evaluation of the input values
+
+
+
+Posibles estrategias de preprocesado: 
+    + Normalizar los RR y dividir toda la secuencia de ECG por onda RR
+
+Posibles Alternativas: 
+    + Pages: 
+        + http://lipiji.com/docs/li2017optdl.pdf -> Adadelta
+        + https://medium.com/better-programming/machine-learning-optimization-methods-and-techniques-56f5a6fc5d0e
+        + https://machinelearningmastery.com/tour-of-optimization-algorithms/
+        => usará genetic + adadelta
+    + La weá de deepmind para las proteinas (dotcsv video) 
+        => noup, porque lo que hace es diseñar un modelo. Posterior a la predicción al modelo, entra un algoritmo de optimización. 
+    + La weá de las time series del profe. 
+        => ninguna. son dos: la 1) discretiza en una string una serie de tiempo de valores reales; la 2) efectúa una evaluación masiva de 7700 comparadores y encuentra los más objetivos para la clasificación. 
+    + Algoritmo Genético (quiero cachar si hay algo mejor)
+        => Lo hay, los optimizadores Adadelta. Revisar como implementarlos con TF.  
+
+Estrategias a utilizar: 
+    - Probar con el Adadelta Optimizer del Keras
+        - Seguir este tuto: https://www.tensorflow.org/guide/keras/customizing_what_happens_in_fit
+          En la práctica hay que sobrescribir la clase del modelo de keras, en particular en donde se calcula el loss value. (el cálculo del error) 
+
+        - Creo que en verdad la cosa es aquí: https://www.tensorflow.org/guide/keras/custom_layers_and_models#setup
+            En teoría debería crear una 'custom layer' que haga el cómputo del ode y toah la weá. 
+            Y luego esa layer, la meto en un modelo y termino de usar el keras de manera normal 
+    - Crear algoritmo genético y probar 
+
+
+    Para cualquiera de los dos métodos necesito tener una señal de referencia. 
+    Para ello la apuesta es la siguiente: 
+        + Tengo una base de datos de mediciones de 10 segundos. (Lobachevsky y PTB-XL)
+        + Crear un capturador simple de intervalo RR, para luego pasarle ESE tacograma al modelo 
+        + Para que así la señal creada con el modelo CALCE con la señal de referencia. 
+
+    Luego, con esta referencia, crear el aprendizaje. 
+
+    Para ello: 
+        + Montar señal y plotearla. 
+        + Armar el detector de RR
+            + Primer intento: https://blog.orikami.nl/exploring-heart-rate-variability-using-python-483a7037c64d => No funciona correctamente. 
+            + Segundo intento exitoso: Se usa Biosppy => EXITO ROTUNDO! 
+
+        + BioSppy es capaz de obtener latido a latido! 
+        + Por tanto se altera la ruta y facilita el camino posterior. 
+    
+    Como puedo obtener latido a latido;
+        + Obtener y poder graficar el latido a latido. 
+        + Comparar el segmentador de hamilton vs el de engzee. BioSppy usa como default el de Hamilton. Por qué será?   
+            RESP: Engzee es como del 1979 corregido el 2012. 
+                    Hamilton es del 2012, y una empresa opensoource. Es el mejor, esa es la razón. 
+    
+        + Ahora la pregunta es; normalizo el tiempo RR? 
+            + Hasta ahora el segmentador simplemente ubica los momentos del rrpeaks y calcula 0.2 pa atrás y 0.4 pa lante y corta allí y nada más. 
+            + Habrá que normalizar? Pareciera que no. [EDIT] Si hay que hacerlo, por lo que indica [5] en 'Otros Importantes'.
+
+    Como ejecutar la normalización: 
+
+        + Ya tengo los rpeaks. 
+        + La normalización de los intervalos será a 900ms y por método de interpolación/decimation or oversamplig según ORIFANDIS! => al final se utilizó el scipy.resample() que está basado en fourier
+        + Luego; los intervalos serán calculados según el RR-interval correspondiente y luego ese RR-interval será asociado al 0.2 y 0.4 
+        + Ahora, Cómo lo asocio? 
+
+        + Intento de normalización: 
+            + 1.- obtener los template y graficarlos de manera independiente. => Basta con tomar los templates y graficarlos todos -uno a uno con plt.plot- versus el eje temporal retornado
+            + 2.- extraer de manera independiente los heartbeats.             => Done; se consigue copiando la función original, pero agregando la adaptación del intervalo RR. 
+            + 3.- Concretar la interpolación.       
+                    + Si la derivación es la AVR (index[3]) debe multiplicarse por -1 y todo funciona de maravillas. Por definición las derivaciones deben ser: AVR, AVL, V1 y V2 (enfrentan al revés el vector de despo)
+                    + Además para centrar correctamente, debe ser el sampleo high resolution. 
+                    + Para mantener centrado el RR-peak, la interpolación se hará en mitades, tal que el RR siga centrado. 
+                        + Probé 'scipy.resample'. Funciona pero aparece un rizado bastante desagradable. 
+                        + Probar otros métodos de resampleo (quizás agregar un filtro de alta frecuencia? Un pasa bajo? )     
+                            + Plotear comparativamente los métodos. -> se ven igual! SON IGUALES.  
+                            + Plotear los componentes en frecuencia y ver si aparecen spurios muy desagradables. 
+                                + Sí aparecen, y se elimina todo componente real e impaginario por sobre +- pi/2. 
+                                + Concretado así el filtro, se logra la señal esperada. 
+
+        + Construcción del modelo como objeto y adaptación necesaria para que me genere un único heartbeat de 450 datos. (para que coincida con los heartbeat de la BD) 
+
+Ahora necesito construir los algoritmos de aprendizaje:
+
+    Primero el de Aprendizaje Reforzado. 
+
+    La estrategia será: 
+        x Señal de referencia -> Q LEARNING -> 21 param -> COSTO [ Señal de Ref - Señal Construida. ] => NOP, porque al final voy a tener un set de parámetros por señal. Aunque igual sería interesante ver qué valores me da. 
+            - Su construcción será el paso 1 para entender como usar TF. 
+
+            - No funciona de manera normal. Hay que construirlo con un ODE propio de tf. No es tan pelúo la verdad, intentarlo. 
+                - https://www.tensorflow.org/probability/api_docs/python/tfp/math/ode/BDF
+        
+        - Señal de referencia -> MODELO ADAPTADO CON LOS 21 PARAM CMO WEIGHTS -> COSTO [ Señal de Ref - Señal Construida. ] 
+            - Esta será la ideal . 
+            - Para concretarlo podría ser simplemente contrsuir el paso anterior, pero que tenga sólo una capa! Y que los valores de esos nodos -SEAN- los outputs! 
+
+        
+
+    Y la otra será el algoritmo genético. 
+        + Se generan subsets -> 10 ondas. 
+        + Efectúo alguna optimización sobre la minimización del error sumado de todo el subset. (onda ERR = SUM[ {i to subset} (subsetsignal_i - sig_construida)] 
+        - Y sobre esto genero una optimización local del subset hasta lo más que se pueda. 
+            - Aquí se podría hacer una búsqueda de gradiente por subset. 
+        + Luego de esa población escojo a los mejores 
+        + Y creo la siguiente generación, que luego se entrena con nuevos subsets (SON RECOMBINADOS) -> con un 60% nuevo (así mantiene un 40% de noción, para que el cambio no sea tan brusco y la mejora gradual) 
+
+    La otra alternativa es utilizar un autoencoder, con el modelo incorporado en el custom decoder. 
+        - https://www.tensorflow.org/tutorials/generative/autoencoder#second_example_image_denoising
+
+    Construcción de la BD de Referencia. 
+        + Cómo genero todas las señales de referencia? 
+            + Ya tengo la construcción de las señales individuales, me falta ver como las manipulo. 
+            + Done. 
+
+
+      
+

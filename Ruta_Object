@@ -1,0 +1,22 @@
+
+Primer Objetivo: 
+    - Preparar los integradores para las 12 deriv 
+        + Para ello, primero re-aislar de todo la majamama para la animación. 
+            + Es simplemente model_func.py <= {din_fun.py, rr_gen.py y variables_func.py}
+        + Revisar requisitos para utilizar la AI
+        - Una vez aislado pasarlos a objetos
+        - Plotearlo de manera simple para ver que funciona. 
+        + Revisar qué bases de datos utilizar -> Papers
+        - Ajustar la amplitud a los datos de la BD utilizada. 
+
+    - Ejecutar el ajuste de los valores a las 12 deriv 
+        - revisar papers para ver qué algoritmo usar 
+        - revisar tensorflow 
+        - implementar algoritmo 
+        - obtener valores. 
+    
+    - Con los valores obtenidos crear generador de datos de a cierto intervalo. 
+        - Probar con el integrador si alcanza a dt por dt 
+        - Sino, probar si alcanza por lotes. 
+
+
