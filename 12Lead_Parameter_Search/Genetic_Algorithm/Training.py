@@ -1,11 +1,11 @@
-from generation import Generation
-from learners import Learner
+from Generation import Generation
+from Learners import Learner
 import wfdb
 import numpy as np
 import random as rnd
 from pprint import pprint
 import matplotlib.pyplot as plt 
-import gen_variabs as gv 
+import Initial_Parameters as init_params 
 import time 
 
 
@@ -217,6 +217,11 @@ if __name__ == "__main__":
     TRAINING_DERIVATION = 'I'
     derivations = ['I', 'II', 'III', 'AVR', 'AVL', 'AVF', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6']
 
+    #Definición de los archivos de log y resultados.
+
+    result_file = 'Results/21-02-18_results'
+    log_file    = 'Results/21-02-18_log'
+
     last_params = [
         [-1.1471975511965977, -0.1617993877991494, 0, 0.1617993877991494, 1.6929693744344996, 1.7453292519943295, 0.8120812342152769, -5.001791134962331, 30.003910180961153, -7.486495296984126, 0.5173193840936107, 0.7604877414164366, 0.19742542321927406, 0.10758288788728022, 0.08092341583951007, 0.09683605807604678, 0.3980991693063881, 0.1930326695545934, 1.002547973318158, 0, 0.04],
         [-1.1471975511965977, -0.1617993877991494, 0, 0.1617993877991494, 1.6929693744344996, 1.7453292519943295, 0.803336145785575, -4.98888690419002, 29.990870833659436, -7.487720019245078, 0.48432914196268484, 0.7464775656164093, 0.20267126366722837, 0.11786401832849114, 0.09138486472746055, 0.1100453880502475, 0.40778037440924697, 0.1890055434259555, 0.9912449019542849, 0, 0.04],
@@ -234,13 +239,13 @@ if __name__ == "__main__":
 
     mt = time.time()
 
-    for d in range(1, len(derivations)):
+    for d in range(len(derivations)):
         ST = time.time()
         TRAINING_DERIVATION = derivations[d]
         #Lectura de la BD de Derivación
-        file_name = "Derivations_Data/BD_"+  TRAINING_DERIVATION + "_signal"
+        file_name = "Derivations_BDs/BD_"+  TRAINING_DERIVATION + "_signal"         #Ojo que el Derivations_BDs/ es un Acceso Directo
         ecg_recover = wfdb.rdsamp(file_name)
-        print('Signal Readed')
+        print('Signal Readed: {}'.format(TRAINING_DERIVATION))
         s = ecg_recover[0].transpose()
 
         #Cálculo de la amplitud promedio de la señal 
@@ -255,7 +260,7 @@ if __name__ == "__main__":
             print(mean)
     
         #Obtención de Parámetros de Partida
-        p = gv.theta_vals + gv.a_vals + gv.b_vals + gv.y0 + [mean]
+        p = init_params.theta_vals + init_params.a_vals + init_params.b_vals + init_params.y0 + [mean]
         #p = last_params[d]
         Orig = Learner(s[:2],p)
         
@@ -293,7 +298,7 @@ if __name__ == "__main__":
 
         ED = time.time()
 
-        f = open("genetic_core/results",'a')
+        f = open(result_file,'a')
         f.write("\n\n -> {}\n".format(TRAINING_DERIVATION))
         f.write("t: {}\n\n".format(ED - ST))
         f.write("LB_Params: {}\nLErr: {}\nLPct: {}%\nPos: {}\n\n".format(LB_params,  L_min_err,  L_min_pct,  -1))
@@ -304,7 +309,7 @@ if __name__ == "__main__":
         f.write("==========\n\n")
         f.close()
 
-    f = open("genetic_core/results",'a')
+    f = open(result_file,'a')
     
     f.write("t: {}".format(ED- mt))
     f.close()

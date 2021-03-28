@@ -1,0 +1,2313 @@
+Signal Readed
+0.540104473134283
+12811.700528424168
+Inicio Entrenamiento
+  Creating 666 Childs gen: 1
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  1
+Generación Inicial creada
+->  1
+Evolution Gen:  1
+  Searching for the best childs. Gen:  1
+  Search ended. Gen:  1
+  Crossover Terminado
+Best Err:  14.436091073539526
+Base Val:  27.21278989452813
+Perc Err:  53.04891975240765
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  0
+=====
+
+->  1
+Evolution Gen:  1
+  Creating 666 Childs gen: 2
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  2
+  Searching for the best childs. Gen:  2
+  Search ended. Gen:  2
+  Crossover Terminado
+Best Err:  19.851332946514955
+Base Val:  22.670892641316357
+Perc Err:  87.56308479154049
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  1
+=====
+
+->  2
+Evolution Gen:  2
+  Creating 666 Childs gen: 3
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  3
+  Searching for the best childs. Gen:  3
+  Search ended. Gen:  3
+  Crossover Terminado
+same_param
+Best Err:  19.851332946514955
+Base Val:  26.14486031775167
+Perc Err:  87.56308479154049
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  2
+=====
+
+->  3
+Evolution Gen:  3
+  Creating 666 Childs gen: 4
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  4
+  Searching for the best childs. Gen:  4
+  Search ended. Gen:  4
+  Crossover Terminado
+same_param
+Best Err:  19.851332946514955
+Base Val:  20.43812231909793
+Perc Err:  87.56308479154049
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  3
+=====
+
+->  4
+Evolution Gen:  4
+  Creating 666 Childs gen: 5
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  5
+  Searching for the best childs. Gen:  5
+  Search ended. Gen:  5
+  Crossover Terminado
+same_param
+Best Err:  19.851332946514955
+Base Val:  26.11746973112621
+Perc Err:  87.56308479154049
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  4
+=====
+
+->  5
+Evolution Gen:  5
+  Creating 666 Childs gen: 6
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  6
+Signal Readed
+0.8398154303976673
+26073.179919363454
+Inicio Entrenamiento
+  Creating 666 Childs gen: 1
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  1
+Generación Inicial creada
+->  1
+Evolution Gen:  1
+  Searching for the best childs. Gen:  1
+  Search ended. Gen:  1
+  Crossover Terminado
+Best Err:  29.378069653088072
+Base Val:  58.40129269548772
+Perc Err:  50.303800305019486
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  0
+=====
+
+->  1
+Evolution Gen:  1
+  Creating 666 Childs gen: 2
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  2
+  Searching for the best childs. Gen:  2
+  Search ended. Gen:  2
+  Crossover Terminado
+Best Err:  32.584366329230406
+Base Val:  57.56002917105521
+Perc Err:  56.60936382154557
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  1
+=====
+
+->  2
+Evolution Gen:  2
+  Creating 666 Childs gen: 3
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  3
+  Searching for the best childs. Gen:  3
+  Search ended. Gen:  3
+  Crossover Terminado
+same_param
+Best Err:  32.584366329230406
+Base Val:  69.83917286440726
+Perc Err:  56.60936382154557
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  2
+=====
+
+->  3
+Evolution Gen:  3
+  Creating 666 Childs gen: 4
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  4
+  Searching for the best childs. Gen:  4
+  Search ended. Gen:  4
+  Crossover Terminado
+same_param
+Best Err:  32.584366329230406
+Base Val:  49.724557015709834
+Perc Err:  56.60936382154557
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  3
+=====
+
+->  4
+Evolution Gen:  4
+  Creating 666 Childs gen: 5
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  5
+  Searching for the best childs. Gen:  5
+  Search ended. Gen:  5
+  Crossover Terminado
+same_param
+Best Err:  32.584366329230406
+Base Val:  63.41015697373973
+Perc Err:  56.60936382154557
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  4
+=====
+
+->  5
+Evolution Gen:  5
+  Creating 666 Childs gen: 6
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  6
+Signal Readed
+0.4514741253544541
+15345.216588013593
+Inicio Entrenamiento
+  Creating 667 Childs gen: 1
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  1
+Generación Inicial creada
+->  1
+Evolution Gen:  1
+  Searching for the best childs. Gen:  1
+  Search ended. Gen:  1
+  Crossover Terminado
+Best Err:  1.4771221838831825
+Base Val:  1.010093726622996
+Perc Err:  146.23615066114542
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  0
+=====
+
+->  1
+Evolution Gen:  1
+  Creating 667 Childs gen: 2
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  2
+  Searching for the best childs. Gen:  2
+  Search ended. Gen:  2
+  Crossover Terminado
+Best Err:  1.5788981629088195
+Base Val:  1.714794499539809
+Perc Err:  92.07506574884283
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  1
+=====
+
+->  2
+Evolution Gen:  2
+  Creating 667 Childs gen: 3
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  3
+  Searching for the best childs. Gen:  3
+  Search ended. Gen:  3
+  Crossover Terminado
+same_param
+Best Err:  1.5788981629088195
+Base Val:  1.0356715630313853
+Perc Err:  92.07506574884283
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  2
+=====
+
+->  3
+Evolution Gen:  3
+  Creating 667 Childs gen: 4
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  4
+  Searching for the best childs. Gen:  4
+  Search ended. Gen:  4
+  Crossover Terminado
+same_param
+Best Err:  1.5788981629088195
+Base Val:  2.2348027270119744
+Perc Err:  92.07506574884283
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  3
+=====
+
+->  4
+Evolution Gen:  4
+  Creating 667 Childs gen: 5
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  5
+  Searching for the best childs. Gen:  5
+  Search ended. Gen:  5
+  Crossover Terminado
+same_param
+Best Err:  1.5788981629088195
+Base Val:  1.1572533996726253
+Perc Err:  92.07506574884283
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  4
+=====
+
+->  5
+Evolution Gen:  5
+  Creating 667 Childs gen: 6
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  6
+Signal Readed
+0.22108218624479237
+54673.7172603209
+Inicio Entrenamiento
+  Creating 666 Childs gen: 1
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  1
+Generación Inicial creada
+->  1
+Evolution Gen:  1
+  Searching for the best childs. Gen:  1
+  Search ended. Gen:  1
+  Crossover Terminado
+Best Err:  46.76892777803449
+Base Val:  30.897528933288108
+Perc Err:  151.36785818378826
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  0
+=====
+
+->  1
+Evolution Gen:  1
+  Creating 666 Childs gen: 2
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  2
+  Searching for the best childs. Gen:  2
+  Search ended. Gen:  2
+  Crossover Terminado
+Best Err:  42.16866303278864
+Base Val:  26.12711738396305
+Perc Err:  161.3980693433558
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  1
+=====
+
+->  2
+Evolution Gen:  2
+  Creating 666 Childs gen: 3
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  3
+  Searching for the best childs. Gen:  3
+  Search ended. Gen:  3
+  Crossover Terminado
+Best Err:  41.2217023203245
+Base Val:  25.74543725611205
+Perc Err:  160.1126518468368
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  2
+=====
+
+->  3
+Evolution Gen:  3
+  Creating 666 Childs gen: 4
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  4
+  Searching for the best childs. Gen:  4
+  Search ended. Gen:  4
+  Crossover Terminado
+Best Err:  48.52411380852182
+Base Val:  31.597595848823012
+Perc Err:  153.56900582146443
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  3
+=====
+
+->  4
+Evolution Gen:  4
+  Creating 666 Childs gen: 5
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  5
+  Searching for the best childs. Gen:  5
+  Search ended. Gen:  5
+  Crossover Terminado
+Best Err:  53.184832103008546
+Base Val:  36.221644910122066
+Perc Err:  146.83163129387907
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  4
+=====
+
+->  5
+Evolution Gen:  5
+  Creating 666 Childs gen: 6
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  6
+Signal Readed
+0.256450337576512
+18284.625076803433
+Inicio Entrenamiento
+  Creating 675 Childs gen: 1
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  1
+Generación Inicial creada
+->  1
+Evolution Gen:  1
+  Searching for the best childs. Gen:  1
+  Search ended. Gen:  1
+  Crossover Terminado
+Best Err:  6.418509478274146
+Base Val:  2.8297152862492116
+Perc Err:  226.8252749477804
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  0
+=====
+
+->  1
+Evolution Gen:  1
+  Creating 675 Childs gen: 2
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  2
+  Searching for the best childs. Gen:  2
+  Search ended. Gen:  2
+  Crossover Terminado
+Best Err:  8.194991791019138
+Base Val:  4.15737406842311
+Perc Err:  197.11942337023078
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  1
+=====
+
+->  2
+Evolution Gen:  2
+  Creating 675 Childs gen: 3
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  3
+  Searching for the best childs. Gen:  3
+  Search ended. Gen:  3
+  Crossover Terminado
+same_param
+Best Err:  8.194991791019138
+Base Val:  4.250881998796321
+Perc Err:  197.11942337023078
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  2
+=====
+
+->  3
+Evolution Gen:  3
+  Creating 675 Childs gen: 4
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  4
+  Searching for the best childs. Gen:  4
+  Search ended. Gen:  4
+  Crossover Terminado
+Best Err:  10.571585660790667
+Base Val:  5.765730839060055
+Perc Err:  183.35204947780872
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  3
+=====
+
+->  4
+Evolution Gen:  4
+  Creating 675 Childs gen: 5
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  5
+  Searching for the best childs. Gen:  5
+  Search ended. Gen:  5
+  Crossover Terminado
+same_param
+Best Err:  10.571585660790667
+Base Val:  6.885427142648922
+Perc Err:  183.35204947780872
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  4
+=====
+
+->  5
+Evolution Gen:  5
+  Creating 675 Childs gen: 6
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  6
+Signal Readed
+0.6059199783339498
+17857.033144014335
+Inicio Entrenamiento
+  Creating 666 Childs gen: 1
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  1
+Generación Inicial creada
+->  1
+Evolution Gen:  1
+  Searching for the best childs. Gen:  1
+  Search ended. Gen:  1
+  Crossover Terminado
+Best Err:  10.769634814322309
+Base Val:  15.810120486599628
+Perc Err:  68.11861315952942
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  0
+=====
+
+->  1
+Evolution Gen:  1
+  Creating 666 Childs gen: 2
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  2
+  Searching for the best childs. Gen:  2
+  Search ended. Gen:  2
+  Crossover Terminado
+Best Err:  10.48222694561107
+Base Val:  13.426601452002275
+Perc Err:  78.07058981443052
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  1
+=====
+
+->  2
+Evolution Gen:  2
+  Creating 666 Childs gen: 3
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  3
+  Searching for the best childs. Gen:  3
+  Search ended. Gen:  3
+  Crossover Terminado
+same_param
+Best Err:  10.48222694561107
+Base Val:  13.358002020969256
+Perc Err:  78.07058981443052
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  2
+=====
+
+->  3
+Evolution Gen:  3
+  Creating 666 Childs gen: 4
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  4
+  Searching for the best childs. Gen:  4
+  Search ended. Gen:  4
+  Crossover Terminado
+Best Err:  9.32572595890668
+Base Val:  12.04472346752604
+Perc Err:  77.42582039388375
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  3
+=====
+
+->  4
+Evolution Gen:  4
+  Creating 666 Childs gen: 5
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  5
+  Searching for the best childs. Gen:  5
+  Search ended. Gen:  5
+  Crossover Terminado
+same_param
+Best Err:  9.32572595890668
+Base Val:  10.787235596166315
+Perc Err:  77.42582039388375
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  4
+=====
+
+->  5
+Evolution Gen:  5
+  Creating 666 Childs gen: 6
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  6
+Signal Readed
+0.3663555854562063
+86807.48194193865
+Inicio Entrenamiento
+  Creating 666 Childs gen: 1
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  1
+Generación Inicial creada
+->  1
+Evolution Gen:  1
+  Searching for the best childs. Gen:  1
+  Search ended. Gen:  1
+  Crossover Terminado
+Best Err:  71.81846699264864
+Base Val:  32.43331454631887
+Perc Err:  221.4342505453237
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  0
+=====
+
+->  1
+Evolution Gen:  1
+  Creating 666 Childs gen: 2
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  2
+  Searching for the best childs. Gen:  2
+  Search ended. Gen:  2
+  Crossover Terminado
+Best Err:  76.89001081898785
+Base Val:  37.61041196911744
+Perc Err:  204.43809783876753
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  1
+=====
+
+->  2
+Evolution Gen:  2
+  Creating 666 Childs gen: 3
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  3
+  Searching for the best childs. Gen:  3
+  Search ended. Gen:  3
+  Crossover Terminado
+same_param
+Best Err:  76.89001081898785
+Base Val:  33.97985508002671
+Perc Err:  204.43809783876753
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  2
+=====
+
+->  3
+Evolution Gen:  3
+  Creating 666 Childs gen: 4
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  4
+  Searching for the best childs. Gen:  4
+  Search ended. Gen:  4
+  Crossover Terminado
+same_param
+Best Err:  76.89001081898785
+Base Val:  40.77698675855141
+Perc Err:  204.43809783876753
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  3
+=====
+
+->  4
+Evolution Gen:  4
+  Creating 666 Childs gen: 5
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  5
+  Searching for the best childs. Gen:  5
+  Search ended. Gen:  5
+  Crossover Terminado
+same_param
+Best Err:  76.89001081898785
+Base Val:  34.304771603923655
+Perc Err:  204.43809783876753
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  4
+=====
+
+->  5
+Evolution Gen:  5
+  Creating 666 Childs gen: 6
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  6
+Signal Readed
+0.751223019841105
+276405.7230190171
+Inicio Entrenamiento
+  Creating 666 Childs gen: 1
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  1
+Generación Inicial creada
+->  1
+Evolution Gen:  1
+  Searching for the best childs. Gen:  1
+  Search ended. Gen:  1
+  Crossover Terminado
+Best Err:  215.84658614720172
+Base Val:  99.50939792379502
+Perc Err:  216.91075481383024
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  0
+=====
+
+->  1
+Evolution Gen:  1
+  Creating 666 Childs gen: 2
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  2
+  Searching for the best childs. Gen:  2
+  Search ended. Gen:  2
+  Crossover Terminado
+Best Err:  222.73917342819422
+Base Val:  86.6545348749738
+Perc Err:  257.0427199794736
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  1
+=====
+
+->  2
+Evolution Gen:  2
+  Creating 666 Childs gen: 3
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  3
+  Searching for the best childs. Gen:  3
+  Search ended. Gen:  3
+  Crossover Terminado
+Best Err:  245.44337216069493
+Base Val:  107.12053200206716
+Perc Err:  229.12822366860394
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  2
+=====
+
+->  3
+Evolution Gen:  3
+  Creating 666 Childs gen: 4
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  4
+  Searching for the best childs. Gen:  4
+  Search ended. Gen:  4
+  Crossover Terminado
+same_param
+Best Err:  245.44337216069493
+Base Val:  103.79411707306998
+Perc Err:  229.12822366860394
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  3
+=====
+
+->  4
+Evolution Gen:  4
+  Creating 666 Childs gen: 5
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  5
+  Searching for the best childs. Gen:  5
+  Search ended. Gen:  5
+  Crossover Terminado
+Best Err:  261.8599077022334
+Base Val:  116.74518534325551
+Perc Err:  224.30039143139817
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  4
+=====
+
+->  5
+Evolution Gen:  5
+  Creating 666 Childs gen: 6
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  6
+Signal Readed
+0.9488031261717367
+64307.32508864685
+Inicio Entrenamiento
+  Creating 666 Childs gen: 1
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  1
+Generación Inicial creada
+->  1
+Evolution Gen:  1
+  Searching for the best childs. Gen:  1
+  Search ended. Gen:  1
+  Crossover Terminado
+Best Err:  56.63861104359596
+Base Val:  102.14858039726121
+Perc Err:  55.447281619896636
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  0
+=====
+
+->  1
+Evolution Gen:  1
+  Creating 666 Childs gen: 2
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  2
+  Searching for the best childs. Gen:  2
+  Search ended. Gen:  2
+  Crossover Terminado
+Best Err:  62.01126167304824
+Base Val:  102.20272408856869
+Perc Err:  60.67476403007556
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  1
+=====
+
+->  2
+Evolution Gen:  2
+  Creating 666 Childs gen: 3
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  3
+  Searching for the best childs. Gen:  3
+  Search ended. Gen:  3
+  Crossover Terminado
+same_param
+Best Err:  62.01126167304824
+Base Val:  37.8024642868414
+Perc Err:  60.67476403007556
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  2
+=====
+
+->  3
+Evolution Gen:  3
+  Creating 666 Childs gen: 4
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  4
+  Searching for the best childs. Gen:  4
+  Search ended. Gen:  4
+  Crossover Terminado
+same_param
+Best Err:  62.01126167304824
+Base Val:  29.59827520950694
+Perc Err:  60.67476403007556
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  3
+=====
+
+->  4
+Evolution Gen:  4
+  Creating 666 Childs gen: 5
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  5
+  Searching for the best childs. Gen:  5
+  Search ended. Gen:  5
+  Crossover Terminado
+same_param
+Best Err:  62.01126167304824
+Base Val:  29.019441746590314
+Perc Err:  60.67476403007556
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  4
+=====
+
+->  5
+Evolution Gen:  5
+  Creating 666 Childs gen: 6
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  6
+Signal Readed
+1.2353733145160912
+62877.44001799448
+Inicio Entrenamiento
+  Creating 666 Childs gen: 1
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  1
+Generación Inicial creada
+->  1
+Evolution Gen:  1
+  Searching for the best childs. Gen:  1
+  Search ended. Gen:  1
+  Crossover Terminado
+Best Err:  58.02057116592193
+Base Val:  129.14087272711862
+Perc Err:  44.92812379278435
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  0
+=====
+
+->  1
+Evolution Gen:  1
+  Creating 666 Childs gen: 2
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  2
+  Searching for the best childs. Gen:  2
+  Search ended. Gen:  2
+  Crossover Terminado
+Best Err:  68.84714406216614
+Base Val:  130.36076885266186
+Perc Err:  52.81277846710117
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  1
+=====
+
+->  2
+Evolution Gen:  2
+  Creating 666 Childs gen: 3
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  3
+  Searching for the best childs. Gen:  3
+  Search ended. Gen:  3
+  Crossover Terminado
+Best Err:  74.75498873498131
+Base Val:  161.50423252153897
+Perc Err:  46.28670565956321
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  2
+=====
+
+->  3
+Evolution Gen:  3
+  Creating 666 Childs gen: 4
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  4
+  Searching for the best childs. Gen:  4
+  Search ended. Gen:  4
+  Crossover Terminado
+same_param
+Best Err:  74.75498873498131
+Base Val:  113.01423316507807
+Perc Err:  46.28670565956321
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  3
+=====
+
+->  4
+Evolution Gen:  4
+  Creating 666 Childs gen: 5
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  5
+  Searching for the best childs. Gen:  5
+  Search ended. Gen:  5
+  Crossover Terminado
+same_param
+Best Err:  74.75498873498131
+Base Val:  151.79792331348415
+Perc Err:  46.28670565956321
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  4
+=====
+
+->  5
+Evolution Gen:  5
+  Creating 666 Childs gen: 6
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  6
+Signal Readed
+1.1528815747448287
+46038.812224319445
+Inicio Entrenamiento
+  Creating 666 Childs gen: 1
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  1
+Generación Inicial creada
+->  1
+Evolution Gen:  1
+  Searching for the best childs. Gen:  1
+  Search ended. Gen:  1
+  Crossover Terminado
+Best Err:  53.15906926486415
+Base Val:  114.40626682313575
+Perc Err:  46.46517253031639
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  0
+=====
+
+->  1
+Evolution Gen:  1
+  Creating 666 Childs gen: 2
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  2
+  Searching for the best childs. Gen:  2
+  Search ended. Gen:  2
+  Crossover Terminado
+Best Err:  62.92654778839383
+Base Val:  111.50127632660487
+Perc Err:  56.43571971685062
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  1
+=====
+
+->  2
+Evolution Gen:  2
+  Creating 666 Childs gen: 3
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  3
+  Searching for the best childs. Gen:  3
+  Search ended. Gen:  3
+  Crossover Terminado
+same_param
+Best Err:  62.92654778839383
+Base Val:  129.472087024243
+Perc Err:  56.43571971685062
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  2
+=====
+
+->  3
+Evolution Gen:  3
+  Creating 666 Childs gen: 4
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  4
+  Searching for the best childs. Gen:  4
+  Search ended. Gen:  4
+  Crossover Terminado
+same_param
+Best Err:  62.92654778839383
+Base Val:  126.14910988230298
+Perc Err:  56.43571971685062
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  3
+=====
+
+->  4
+Evolution Gen:  4
+  Creating 666 Childs gen: 5
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  5
+  Searching for the best childs. Gen:  5
+  Search ended. Gen:  5
+  Crossover Terminado
+same_param
+Best Err:  62.92654778839383
+Base Val:  65.30337590901665
+Perc Err:  56.43571971685062
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  4
+=====
+
+->  5
+Evolution Gen:  5
+  Creating 666 Childs gen: 6
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  6
+Signal Readed
+0.9308167293467027
+29005.233079814796
+Inicio Entrenamiento
+  Creating 666 Childs gen: 1
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  1
+Generación Inicial creada
+->  1
+Evolution Gen:  1
+  Searching for the best childs. Gen:  1
+  Search ended. Gen:  1
+  Crossover Terminado
+Best Err:  22.67743249623318
+Base Val:  51.528899315777885
+Perc Err:  44.00915369308009
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  0
+=====
+
+->  1
+Evolution Gen:  1
+  Creating 666 Childs gen: 2
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  2
+  Searching for the best childs. Gen:  2
+  Search ended. Gen:  2
+  Crossover Terminado
+Best Err:  33.8327997058008
+Base Val:  37.89141776898888
+Perc Err:  89.28881973239403
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  1
+=====
+
+->  2
+Evolution Gen:  2
+  Creating 666 Childs gen: 3
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  3
+  Searching for the best childs. Gen:  3
+  Search ended. Gen:  3
+  Crossover Terminado
+same_param
+Best Err:  33.8327997058008
+Base Val:  44.979133256573704
+Perc Err:  89.28881973239403
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  2
+=====
+
+->  3
+Evolution Gen:  3
+  Creating 666 Childs gen: 4
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  4
+  Searching for the best childs. Gen:  4
+  Search ended. Gen:  4
+  Crossover Terminado
+same_param
+Best Err:  33.8327997058008
+Base Val:  49.70057675805518
+Perc Err:  89.28881973239403
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  3
+=====
+
+->  4
+Evolution Gen:  4
+  Creating 666 Childs gen: 5
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  5
+  Searching for the best childs. Gen:  5
+  Search ended. Gen:  5
+  Crossover Terminado
+same_param
+Best Err:  33.8327997058008
+Base Val:  44.471293750366634
+Perc Err:  89.28881973239403
+M Boom:  0 Stuck:  0 Ch_Rate:  1
+End Gen:  4
+=====
+
+->  5
+Evolution Gen:  5
+  Creating 666 Childs gen: 6
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+    Mutation!
+  Childs created. Gen:  6

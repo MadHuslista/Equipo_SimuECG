@@ -3,8 +3,8 @@ import wfdb
 import random
 import math as m 
 import matplotlib.pyplot as plt 
-import gen_variabs as gv 
-from genderiv_core import Derivative_Core 
+import Initial_Parameters as init_params 
+from Derivative_Core import Derivative_Core 
 import numpy as np 
 
 
@@ -48,12 +48,12 @@ class Learner():
     
 
 if __name__ == "__main__": 
-    ecg_recover = wfdb.rdsamp("Derivations_Data/BD_II_signal")
+    ecg_recover = wfdb.rdsamp("Derivations_BDs/BD_II_signal")
     s = ecg_recover[0].transpose()
 
     s = s[0:10]
 
-    p = gv.theta_vals + gv.a_vals + gv.b_vals + gv.y0
+
     a = Learner(s,p)
 
     

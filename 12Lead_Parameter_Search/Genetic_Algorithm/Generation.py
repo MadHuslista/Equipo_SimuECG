@@ -1,12 +1,12 @@
 
-from learners import Learner
+from Learners import Learner
 import math as m
 import wfdb
 import numpy as np
-from gen_setup import create_subsets
+from SubSets_Setup import create_subsets
 import random
 import matplotlib.pyplot as plt 
-import gen_variabs as gv 
+import Initial_Parameters as init_params 
 
 class Generation(): 
     """
@@ -152,7 +152,7 @@ if __name__ == "__main__":
     s = ecg_recover[0].transpose()
 
     s = create_subsets(s)        
-    p = gv.theta_vals + gv.a_vals + gv.b_vals + gv.y0 + [-0.98765]
+    p = init_params.theta_vals + init_params.a_vals + init_params.b_vals + init_params.y0 + [-0.98765]
 
     print('done')
 

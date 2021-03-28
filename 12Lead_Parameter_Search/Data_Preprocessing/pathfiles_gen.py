@@ -692,7 +692,9 @@ for i in range(len(files)):
     if len(files[i]) > 5: 
         files[i] = files[i][-5:]
 
-path = 'Data/ptb-xl/records500/'
+
+
+path = 'Original_BD/ptb-xl/records500/'
 paths = []
 
 for i in range(len(files)):

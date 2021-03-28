@@ -3,7 +3,7 @@ import wfdb
 import matplotlib.pyplot as plt 
 from biosppy.signals import ecg
 from tachogram_detect import extract_heartbeats_RRadapted
-from normdata_paths import files #Toma todas las direcciones de los archivos originales. 
+from pathfiles import files #Toma todas las direcciones de los archivos originales. 
 import time 
 
 #Este código toma todas los archivos de señales de la carpeta de BD (señales de 10seg y 12 canales. 1 por derivación) 
@@ -54,10 +54,9 @@ for i in derivations:                                                           
     heartbeats = np.array(heartbeats)                                                                                   #Se transpone la matriz para guardarla según las especificaciones de wfdb                                                        
     h = heartbeats                                                                                                      #Creación de una copia independiente para posterior constraste de la recuperación
     heartbeats = heartbeats.transpose()                         
-
     units = ['mV' for i in range(heartbeats.shape[1])]                                                                  #Construcción de otros metadatos genéricos necesarios
     ch_name = [TRAINING_DERIVATION + '-' + ch_name[i] for i in range(len(ch_name))]
-    sig_name = 'Derivations_Data/'+ 'BD_'+TRAINING_DERIVATION+'_signal'
+    sig_name = 'Derivations_BDs/'+ 'BD_'+TRAINING_DERIVATION+'_signal'
     fmt = ['32'for i in range(heartbeats.shape[1]) ]
 
 

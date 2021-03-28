@@ -1,0 +1,53 @@
+On branch main
+Your branch is ahead of 'origin/main' by 41 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	renamed:    12_Deriv/heartbeats_gen.py -> 12Lead_Parameter_Search/Data_Preprocessing/heartbeats_gen.py
+	new file:   12Lead_Parameter_Search/Data_Preprocessing/new_path.py
+	new file:   12Lead_Parameter_Search/Data_Preprocessing/pathfiles.py
+	renamed:    12_Deriv/pathfiles_gen.py -> 12Lead_Parameter_Search/Data_Preprocessing/pathfiles_gen.py
+	renamed:    12_Deriv/tachogram_detect.py -> 12Lead_Parameter_Search/Data_Preprocessing/tachogram_detect.py
+	renamed:    Divagaciones. -> 12Lead_Parameter_Search/Divagaciones.
+	renamed:    12_Deriv/genetic_core/genderiv_core.py -> 12Lead_Parameter_Search/Genetic_Algorithm/Derivative_Core.py
+	renamed:    12_Deriv/genetic_core/generation.py -> 12Lead_Parameter_Search/Genetic_Algorithm/Generation.py
+	renamed:    12_Deriv/genetic_core/gen_variabs.py -> 12Lead_Parameter_Search/Genetic_Algorithm/Initial_Parameters.py
+	renamed:    12_Deriv/genetic_core/learners.py -> 12Lead_Parameter_Search/Genetic_Algorithm/Learners.py
+	renamed:    12_Deriv/genetic_core/Results/21-02-18_log -> 12Lead_Parameter_Search/Genetic_Algorithm/Results/21-02-18_log
+	renamed:    12_Deriv/genetic_core/Results/21-02-18_results -> 12Lead_Parameter_Search/Genetic_Algorithm/Results/21-02-18_results
+	new file:   12Lead_Parameter_Search/Genetic_Algorithm/Results/Legacy/1_log
+	new file:   12Lead_Parameter_Search/Genetic_Algorithm/Results/Legacy/1_results
+	renamed:    12_Deriv/genetic_core/gen_setup.py -> 12Lead_Parameter_Search/Genetic_Algorithm/SubSets_Setup.py
+	renamed:    12_Deriv/genetic_core/Training.py -> 12Lead_Parameter_Search/Genetic_Algorithm/Training.py
+	new file:   12Lead_Parameter_Search/Genetic_Algorithm/ploteo.py
+	renamed:    Ruta_Object -> 12Lead_Parameter_Search/Ruta_Object
+	deleted:    12_Deriv/deriv_core.py
+	deleted:    12_Deriv/description_file.py
+	deleted:    12_Deriv/model.py
+	deleted:    12_Deriv/normdata_paths.py
+	deleted:    12_Deriv/rrgen.py
+	deleted:    12_Deriv/tf_hiworld.py
+	deleted:    12_Deriv/train_variabs.py
+	deleted:    Core/deriv_core.py
+	deleted:    Core/model.py
+	deleted:    Core/rr.py
+	deleted:    Core/variab.py
+	renamed:    Interfaz.py -> Desktop_Prototype/Interfaz.py
+	new file:   Desktop_Prototype/README.md
+	renamed:    Slider_Interfaz.py -> Desktop_Prototype/Slider_Interfaz.py
+	renamed:    din_fun.py -> Desktop_Prototype/din_fun.py
+	renamed:    model_func.py -> Desktop_Prototype/model_func.py
+	renamed:    rr_gen.py -> Desktop_Prototype/rr_gen.py
+	renamed:    variables_func.py -> Desktop_Prototype/variables_func.py
+	deleted:    README.md
+	new file:   Repo_FileRearrangements_Log
+	renamed:    out.png -> images/out.png
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   Repo_FileRearrangements_Log
+

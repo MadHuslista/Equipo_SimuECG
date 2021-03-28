@@ -20,7 +20,6 @@ import numpy as np
 from scipy.integrate import solve_ivp as slv 
 from scipy.integrate import ode
 from biosppy.signals import ecg
-import gen_variabs as gv
 
 import matplotlib.pyplot as plt 
 
