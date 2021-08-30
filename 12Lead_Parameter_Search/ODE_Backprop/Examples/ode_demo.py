@@ -36,11 +36,11 @@ t = torch.linspace(0., 25., args.data_size).to(device)
 #Valores Iniciales del ODE
 true_y0 = torch.tensor([[2., 0.]]).to(device)
 
-# Parámetros reales del ODE 
-    # Acá existen porque, para el ejemplo, es necesario
+# Parámetros reales del ODE, i.e, las dinámicas de referencia normalmente ocultas que son buscadas
+    # Acá están declaradas porque, para el ejemplo, es necesario
     # tenerlos para generar la señal de referencia. 
     # En la práctica son desconocidos y son los buscados por lo 
-    # que aquí es el ODEFunc
+    # que aquí es el ODEFunc, a partir de una bd de señales de referencia. 
 true_A = torch.tensor([[-0.1, 2.0], [-2.0, -0.1]]).to(device)
 
 
@@ -48,13 +48,14 @@ true_A = torch.tensor([[-0.1, 2.0], [-2.0, -0.1]]).to(device)
 # This Lambda is the implementation of the real 
 # differential equations. 
 # Es decir, este Lambda es el que -para el ejemplo- 
-# Crea la señal de referencia. 
+# crea la señal de referencia, a partir de las dinámicas de referencia 
 # En la práctica no debería existir, y simplemente tendría la 
 # señal ECG. 
 class Lambda(nn.Module):
 
     def forward(self, t, y):
         return torch.mm(y**3, true_A)
+
 
 # This is the functions to be trained. 
 # It's parameters will be the ones that are trained. 
@@ -69,26 +70,33 @@ class ODEFunc(nn.Module):
         #    nn.Tanh(),
         #    nn.Linear(50, 2),
         #)
-        self.net = nn.Linear(2,2) # Lo dejé con una sola capa, porque de esta manera, la matriz de pesos sólo queda de 2x2, igual que True_A. 
-            # Por tanto, como precisamente la matriz de peso con la de input, efectua una matmul (tal como en Lambda().forward() )
-            # Al final del entrenamiento, la matriz de pesos debería llegar a valores similares de True_A
 
-        #Este es el proceso de inicialización de los parámetros
+        self.net = nn.Linear(2,2) 
+            # Lo dejé con una sola capa, porque de esta manera, la matriz de pesos sólo queda de 2x2, igual que True_A. 
+            # Por tanto, como precisamente la matriz de peso efectua una matmul con la de input  (tal como en Lambda().forward() )
+            # Al final del entrenamiento, esta matriz de pesos debería llegar a valores similares de True_A
+
+        #Este es el proceso de inicialización random de los parámetros
+            # Aquí me falta probar como inicializarlos 'a mano'. Así puedo ayudar al solver a pillar el valor real, 
+            # A partir de valores cercanos. 
+            # Así apura el aprendizaje
         for m in self.net.modules():
             if isinstance(m, nn.Linear):
                 nn.init.normal_(m.weight, mean=0, std=0.1)
                 nn.init.constant_(m.bias, val=0)
 
+    # Aplica lo que después del entrenamiento debería ser igual que la diferencial de referencia
     def forward(self, t, y):
         return self.net(y**3)
 
 
-# El no_grad, implica que los cálculos efectuados por -este- odeint no se agregan 
-# Al computational graph creado por el autograd, que después utiliza para hacer la bakcprop
+# El no_grad, implica que los cálculos efectuados por -este- odeint no se agregan al 
+# computational graph creado por el autograd, que después utiliza para hacer la bakcprop
 with torch.no_grad():
     true_y = odeint(Lambda(), true_y0, t, method='dopri5')
 
-    #Este true_y, corresponde a las trayectorias de 'referencia', que en la práctica deberían corresponder a las señales ECG
+    #Este true_y, corresponde a las trayectorias de 'referencia', que 
+    # en la práctica deberían corresponder a las señales ECG
 
 
 def get_batch():
@@ -103,8 +111,10 @@ def get_batch():
                                         replace=False
                                         )
                         )
-    # Capturo los valores de true_y que corresponden a estas posiciones
+    # Capturo los valores de true_y que corresponden a estas posiciones 
+    # Con ellas creo los nuevos 'valores iniciales' para la odeint. 
     batch_y0 = true_y[s]  # (M, D)
+ 
     # Creo un sub-vector de tiempo según lo determinado. 
     batch_t = t[:args.batch_time]  # (T)
 
@@ -229,7 +239,8 @@ if __name__ == '__main__':
         batch_y0, batch_t, batch_y = get_batch()
 
         # Obtención de las predicciones a partir del odeint en base a la func. 
-        # En respuesta, me entrega las predicciones de la señal a partir de batch_y0. 
+        # La respuesta, me entrega las predicciones de la señal a partir de batch_y0. 
+        # Y son tantas predicciones como pares de y0 contenga el batch_y0 y basta un sólo batch_t para todos los y0 dentro de batch_y0
         # El ideal es que estas se correspondan con batch_y (que es la señal real, dado qeu es un segmento directo de true_y)
         pred_y = odeint(func, batch_y0, batch_t).to(device)
 
